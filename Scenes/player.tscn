@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkprbqt261yqc"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xi3l1"]
+[ext_resource type="Texture2D" uid="uid://bctj2feb5k2k3" path="res://Sprites/Screenshot 2024-02-26 at 2.59.55 PM.png" id="2_12rpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_132id"]
+size = Vector2(17, 7)
+
+[node name="Player" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("1_xi3l1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.53674e-06, 3.8147e-06)
+shape = SubResource("RectangleShape2D_132id")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.037, 0.037)
+texture = ExtResource("2_12rpx")
+offset = Vector2(90, -230)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-0.328501, 0.241001)
+zoom = Vector2(4, 4)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
