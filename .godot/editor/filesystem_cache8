@@ -1,10 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709096144
-::res://Scenes/::1709095660
-level1.tscn::PackedScene::1310144136781114936::1709095660::0::1::::<><>::uid://s33hnai4awrs::::res://Tilesets/TX Plant.png<>uid://ct02b8ruegmnq::::res://Tilesets/TX Tileset Grass.png<>uid://cdkweqgs5domm::::res://Tilesets/TX Struct.png<>uid://c0mwwrp15bshr::::res://Tilesets/TX Props.png<>uid://4bqv0xsiu2fo::::res://Tilesets/TX Tileset Stone Ground.png<>uid://bduav7cvi4wan::::res://Tilesets/TX Tileset Wall.png<>uid://bkprbqt261yqc::::res://Scenes/player.tscn
-player.tscn::PackedScene::3120309632049375586::1709075088::0::1::::<><>::res://Scripts/Player.gd<>uid://bctj2feb5k2k3::::res://Sprites/Screenshot 2024-02-26 at 2.59.55 PM.png
-::res://Scripts/::1709082139
-Player.gd::GDScript::-1::1709082139::0::1::::<>CharacterBody2D<>::
+::res://::1709162003
+::res://Scenes/::1709150741
+level1.tscn::PackedScene::1310144136781114936::1709150741::0::1::::<><>::uid://s33hnai4awrs::::res://Tilesets/TX Plant.png<>uid://ct02b8ruegmnq::::res://Tilesets/TX Tileset Grass.png<>uid://cdkweqgs5domm::::res://Tilesets/TX Struct.png<>uid://cxkp4govf4obo::::res://Tilesets/60e4319e13a64ae0df0b7545_image22.png<>uid://c0mwwrp15bshr::::res://Tilesets/TX Props.png<>uid://4bqv0xsiu2fo::::res://Tilesets/TX Tileset Stone Ground.png<>uid://bduav7cvi4wan::::res://Tilesets/TX Tileset Wall.png<>uid://bkprbqt261yqc::::res://Scenes/player.tscn
+player.tscn::PackedScene::3120309632049375586::1709150540::0::1::::<><>::res://Scripts/Player.gd<>uid://bctj2feb5k2k3::::res://Sprites/Screenshot 2024-02-26 at 2.59.55 PM.png
+::res://Scripts/::1709150090
+Player.gd::GDScript::-1::1709150090::0::1::::<>CharacterBody2D<>::
 ::res://Sprites/::1709076758
 icon.svg::CompressedTexture2D::2669323203309610739::1708732260::1709076758::1::::<><>::
 image copy.png::CompressedTexture2D::8949041901566644936::1708924616::1709076758::1::::<><>::

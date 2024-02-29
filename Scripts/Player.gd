@@ -17,11 +17,15 @@ enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 func _physics_process(delta):
 	move(delta)
 
-
 func move(delta):
 	match stair_type:
+		StairTypes.UP_DOWN:
+			speed_multiplier = STAIRSMULTIPLIER
 		StairTypes.RIGHT:
 			y_bias = -sign(axis.x)
+			speed_multiplier = STAIRSMULTIPLIER
+		StairTypes.LEFT:
+			y_bias = sign(axis.x)
 			speed_multiplier = STAIRSMULTIPLIER
 		StairTypes.NONE:
 			y_bias = 0
@@ -45,10 +49,22 @@ func move(delta):
 		velocity += (axis * ACCELERATION * delta)
 		velocity = velocity.limit_length(target_speed)
 	
+	if velocity.x < 0:
+		$Sprite2D.scale.x = -abs($Sprite2D.scale.x)
+	elif velocity.x > 0:
+		$Sprite2D.scale.x = abs($Sprite2D.scale.x)
+		
 	move_and_slide()
 
 func _on_stairs_right_body_entered(body):
-	pass # Replace with function body.
 	stair_type = StairTypes.RIGHT
+func _on_stairs_left_body_entered(body):
+	stair_type = StairTypes.LEFT
+func _on_stairs_up_down_body_entered(body):
+	stair_type = StairTypes.UP_DOWN
 func _on_stairs_right_body_exited(body):
+	stair_type = StairTypes.NONE
+func _on_stairs_left_body_exited(body):
+	stair_type = StairTypes.NONE
+func _on_stairs_up_down_body_exited(body):
 	stair_type = StairTypes.NONE
