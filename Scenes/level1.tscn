@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://swv5agras8ae"]
+[gd_scene load_steps=19 format=3 uid="uid://swv5agras8ae"]
 
 [ext_resource type="Texture2D" uid="uid://s33hnai4awrs" path="res://Tilesets/TX Plant.png" id="1_01mv4"]
 [ext_resource type="Texture2D" uid="uid://ct02b8ruegmnq" path="res://Tilesets/TX Tileset Grass.png" id="2_357na"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4bqv0xsiu2fo" path="res://Tilesets/TX Tileset Stone Ground.png" id="5_4c6nu"]
 [ext_resource type="Texture2D" uid="uid://bduav7cvi4wan" path="res://Tilesets/TX Tileset Wall.png" id="6_s3rj6"]
 [ext_resource type="PackedScene" uid="uid://bkprbqt261yqc" path="res://Scenes/player.tscn" id="7_wf2d5"]
+[ext_resource type="PackedScene" uid="uid://nrtufipqail6" path="res://enemy.tscn" id="8_bcoqa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ku2m"]
 texture = ExtResource("1_01mv4")
@@ -2696,6 +2697,9 @@ position = Vector2(432, 184)
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_1h7if")
 
+[node name="Enemy" parent="." instance=ExtResource("8_bcoqa")]
+position = Vector2(446, 339)
+
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
 position = Vector2(450, 545)
 
@@ -2705,3 +2709,6 @@ position = Vector2(450, 545)
 [connection signal="body_exited" from="TileMap/StairsLeft" to="Player" method="_on_stairs_left_body_exited"]
 [connection signal="body_entered" from="TileMap/StairsUpDown" to="Player" method="_on_stairs_up_down_body_entered"]
 [connection signal="body_exited" from="TileMap/StairsUpDown" to="Player" method="_on_stairs_up_down_body_exited"]
+[connection signal="body_entered" from="Enemy/Sword/McDeath" to="Player" method="_on_mc_death_body_entered"]
+
+[editable path="Enemy"]
