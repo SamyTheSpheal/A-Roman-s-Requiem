@@ -1,5 +1,5 @@
 res://Scenes/level1.tscn
 res://Scenes/player.tscn
-res://Scripts/Player.gd
-res://Scenes/Enemy.gd
 res://enemy.tscn
+res://Scripts/Player.gd
+res://Scenes/Camera2D.gd

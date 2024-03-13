@@ -1,44 +1,30 @@
 extends CharacterBody2D
 
-@export var WALK_SPEED = 265
+@export var WALK_SPEED = 95
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
+@export var KNOCKBACK_POWER = 40
+@export var KNOCKBACK_RESISTANCE = 800
 
 enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 
 @onready var player = get_parent().get_node("Player")
 @onready var axis = Vector2.ZERO
+@onready var knockback_axis = Vector2.ZERO
 @onready var target_speed = 0
-@onready var sword_rotation = 0
-@onready var swing = 0
-@onready var swinging = false
 @onready var stair_type = StairTypes.NONE
 @onready var y_bias = 0
 @onready var speed_multiplier = 1
-
+@onready var knocked_back = false
+@onready var current_knockback_speed = 0
+	
 func _physics_process(delta):
 	move(delta)
-	swing_sword(delta)
-	update_sword(delta)
+	check_overlapping_bodies(delta)
+	if knocked_back:
+		knockback(current_knockback_speed, delta)
 
-func swing_sword(delta):
-	var direction_axis = (player.get_position() - self.global_position)
-	if direction_axis.length() < 130:
-		if not swinging:
-			swing = -120
-			swinging = true
-		else:
-			swing += RandomNumberGenerator.new().randi_range(14,25)
-			if swing > 120:
-				swinging = false
-	else:
-		swing = 0
-	
-func update_sword(delta):
-	sword_rotation = atan2(axis.y, axis.x) + deg_to_rad(45 + swing)
-	$Sword.rotation = sword_rotation
-	
 func move(delta):
 	match stair_type:
 		StairTypes.UP_DOWN:
@@ -72,9 +58,25 @@ func move(delta):
 		$Sprite2D.scale.x = abs($Sprite2D.scale.x)
 	
 	move_and_slide()
+
+func knockback(speed, delta):
+	current_knockback_speed = speed
+	if not knocked_back:
+		knocked_back = true
+		knockback_axis = -axis.normalized()
+		velocity += knockback_axis * current_knockback_speed * delta
+	else:
+		current_knockback_speed -= KNOCKBACK_RESISTANCE
+		velocity += knockback_axis * current_knockback_speed * delta
+		if current_knockback_speed <= 0:
+			knocked_back = false
+	move_and_slide()
 	
-
-
+func check_overlapping_bodies(delta):
+	var overlapping_bodies = $Area2D.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body.name == "Player":
+			body.damage()
 
 func _on_stairs_right_body_entered(body):
 	stair_type = StairTypes.RIGHT

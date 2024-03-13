@@ -1,23 +1,38 @@
 extends CharacterBody2D
 
-@export var WALKSPEED = 65
-@export var SPRINTSPEED = 265
+@export var AUTO_Y_MOVEMENT = 50
+@export var HORIZONTAL_MOVEMENT = 50
+@export var WALKSPEED = 10
+@export var SPRINTSPEED = 25
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
 @export var DASH_MULTIPLIER = 1.5
 @export var DASH_FRICTION = 400
+@export var HALF_SWING_ANGLE = 100
+@export var SWING_SPEED = 40
+@export var KNOCKBACK_POWER = 10000
+@export var KNOCKBACK_RESISTANCE = 40
 
 enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 
+@onready var health = 100
 @onready var axis = Vector2.ZERO
-@onready var target_speed = 0
+@onready var speed_offset = 0
+@onready var target_speed = Vector2.ZERO
 @onready var stair_type = StairTypes.NONE
 @onready var y_bias = 0
 @onready var speed_multiplier = 1
 @onready var left_click_pressed = false
 @onready var left_click_just_pressed = false
+@onready var dashing = false
 @onready var slashing = false
+@onready var sword_direction = 0
+@onready var sword_hitbox = $SwordHitbox
+@onready var sword_collision = !$SwordHitbox/CollisionShape2D.disabled
+@onready var sword_start_rotation = 0
+@onready var sword_end_rotation = 0
+@onready var dead = false
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -32,13 +47,20 @@ func _unhandled_input(event):
 func update_just_pressed():
 	if left_click_just_pressed:
 		left_click_just_pressed = false
+
+func _ready():
+	sword_collision = false
 	
 func _physics_process(delta):
-	if left_click_just_pressed or slashing:
-		slash(delta)
-	else:
-		move(delta)
-	update_just_pressed()
+	if not dead:
+		if left_click_just_pressed or dashing:
+			dash(delta)
+		if left_click_just_pressed or slashing:
+			slash(delta)
+		if not dashing:
+			move(delta)
+		update_just_pressed()
+		check_overlapping_bodies(delta)
 	
 func move(delta):
 	match stair_type:
@@ -59,41 +81,75 @@ func move(delta):
 		
 	axis = axis.normalized()
 	
+	if axis.y == 0:
+		velocity.y = -AUTO_Y_MOVEMENT
+
 	if axis == Vector2.ZERO:
-		if velocity.length() > (FRICTION * delta):
+		if velocity.length() > AUTO_Y_MOVEMENT:
 			velocity -= velocity.normalized() * (FRICTION * delta)
 		else:
-			velocity = Vector2.ZERO
+			velocity.x = 0
 	else:
 		if (Input.is_key_pressed(KEY_SHIFT)):
-			target_speed = SPRINTSPEED * speed_multiplier
+			speed_offset = SPRINTSPEED * speed_multiplier
 		else:
-			target_speed = WALKSPEED * speed_multiplier
-		velocity += (axis * ACCELERATION * delta)
-		velocity = velocity.limit_length(target_speed)
+			speed_offset = WALKSPEED * speed_multiplier
+		target_speed = Vector2(sign(axis.x) * (HORIZONTAL_MOVEMENT + speed_offset), -AUTO_Y_MOVEMENT + (sign(axis.y) * speed_offset))
+		velocity = target_speed
+		velocity = velocity.limit_length(max(HORIZONTAL_MOVEMENT, AUTO_Y_MOVEMENT) + speed_offset)
 	
 	if velocity.x < 0:
 		$Sprite2D.scale.x = -abs($Sprite2D.scale.x)
 	elif velocity.x > 0:
 		$Sprite2D.scale.x = abs($Sprite2D.scale.x)
-		
 	move_and_slide()
-	
-func slash(delta):
-	if not slashing:
+
+func dash(delta):
+	if not dashing:
 		axis = get_global_mouse_position() - self.global_position
 		axis = axis.normalized()
-		velocity += axis * target_speed * DASH_MULTIPLIER
-		slashing = true
+		velocity += axis * speed_offset * DASH_MULTIPLIER
+		dashing = true
 	else:
 		if velocity.length() > (DASH_FRICTION * delta):
 			velocity -= velocity.normalized() * (DASH_FRICTION * delta)
 		else:
 			velocity = Vector2.ZERO
-			slashing = false
+			dashing = false
 		
 	move_and_slide()
-	
+
+func slash(delta):
+	if not slashing:
+		var sword_axis = get_global_mouse_position() - sword_hitbox.global_position
+		sword_direction = sword_axis.angle()
+		sword_start_rotation = sword_direction + deg_to_rad(-HALF_SWING_ANGLE)
+		sword_end_rotation = sword_direction + deg_to_rad(HALF_SWING_ANGLE)
+		sword_hitbox.rotation = sword_start_rotation
+		slashing = true
+		sword_collision = true
+	else:
+		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)
+		var sine_progress = sin(progress * PI)
+		var adjusted_speed = lerp(1, SWING_SPEED, sine_progress)
+		sword_hitbox.rotation += deg_to_rad(adjusted_speed)
+		if sword_hitbox.rotation > sword_end_rotation:
+			slashing = false
+			sword_collision = false
+
+func damage():
+	health -= 1
+	set_health_bar(health)
+
+func check_overlapping_bodies(delta):
+	var overlapping_bodies = $SwordHitbox.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body.name == "Enemy" and sword_collision:
+			body.knockback(KNOCKBACK_POWER, delta)
+			
+func set_health_bar(value):
+	$ProgressBar.value = value
+
 func _on_stairs_right_body_entered(body):
 	stair_type = StairTypes.RIGHT
 func _on_stairs_left_body_entered(body):
@@ -107,6 +163,3 @@ func _on_stairs_left_body_exited(body):
 func _on_stairs_up_down_body_exited(body):
 	stair_type = StairTypes.NONE
 
-
-func _on_mc_death_body_entered(body):
-	print("ded")

@@ -1,23 +1,29 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709272867
-enemy.tscn::PackedScene::948739003532206357::1709272584::0::1::::<><>::res://Scenes/Enemy.gd<>uid://b5blb5dfq4fkr::::res://Sprites/Screenshot 2024-02-29 at 9.08.09 PM.png
-::res://Scenes/::1709272584
-Enemy.gd::GDScript::-1::1709271923::0::1::::<>CharacterBody2D<>::
-level1.tscn::PackedScene::1310144136781114936::1709272584::0::1::::<><>::uid://s33hnai4awrs::::res://Tilesets/TX Plant.png<>uid://ct02b8ruegmnq::::res://Tilesets/TX Tileset Grass.png<>uid://cdkweqgs5domm::::res://Tilesets/TX Struct.png<>uid://cxkp4govf4obo::::res://Tilesets/60e4319e13a64ae0df0b7545_image22.png<>uid://c0mwwrp15bshr::::res://Tilesets/TX Props.png<>uid://4bqv0xsiu2fo::::res://Tilesets/TX Tileset Stone Ground.png<>uid://bduav7cvi4wan::::res://Tilesets/TX Tileset Wall.png<>uid://bkprbqt261yqc::::res://Scenes/player.tscn<>uid://nrtufipqail6::::res://enemy.tscn
-player.tscn::PackedScene::3120309632049375586::1709272584::0::1::::<><>::res://Scripts/Player.gd<>uid://bctj2feb5k2k3::::res://Sprites/Screenshot 2024-02-26 at 2.59.55 PM.png
-::res://Scripts/::1709261752
-Player.gd::GDScript::-1::1709261752::0::1::::<>CharacterBody2D<>::
-::res://Sprites/::1709272867
+::res://::1710367261
+enemy.tscn::PackedScene::948739003532206357::1710200323::0::1::::<><>::res://Scenes/Enemy.gd<>uid://cnk6ut2r8bpkh::::res://Sprites/Screenshot 2024-02-29 at 9.59.11 PM.png
+::res://Scenes/::1710288919
+Enemy.gd::GDScript::-1::1709962842::0::1::::<>CharacterBody2D<>::
+level1.tscn::PackedScene::1310144136781114936::1710200322::0::1::::<><>::uid://s33hnai4awrs::::res://Tilesets/Scenery/TX Plant.png<>uid://ct02b8ruegmnq::::res://Tilesets/Ground/TX Tileset Grass.png<>uid://cdkweqgs5domm::::res://Tilesets/Building/TX Struct.png<>uid://cxkp4govf4obo::::res://Tilesets/Building/60e4319e13a64ae0df0b7545_image22.png<>uid://c0mwwrp15bshr::::res://Tilesets/Scenery/TX Props.png<>uid://4bqv0xsiu2fo::::res://Tilesets/Ground/TX Tileset Stone Ground.png<>uid://bduav7cvi4wan::::res://Tilesets/Building/TX Tileset Wall.png<>uid://bkprbqt261yqc::::res://Scenes/player.tscn<>uid://lj3i7ueb2wq8::::res://Tilesets/Ground/ARRLv1TileSet.png<>uid://nrtufipqail6::::res://enemy.tscn
+player.tscn::PackedScene::3120309632049375586::1710288919::0::1::::<><>::res://Scripts/Player.gd<>uid://bctj2feb5k2k3::::res://Sprites/Screenshot 2024-02-26 at 2.59.55 PM.png<>uid://cmx4ak368712k::::res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png<>uid://dp17qjwc3sqny::::res://Sprites/d5idnkk-885e95e6-550d-426d-8755-a91c974444e0.jpg
+::res://Scripts/::1710198895
+Player.gd::GDScript::-1::1710198895::0::1::::<>CharacterBody2D<>::
+::res://Sprites/::1710046343
+d5idnkk-885e95e6-550d-426d-8755-a91c974444e0.jpg::CompressedTexture2D::8267740550551211426::1709614026::1709614026::1::::<><>::
 icon.svg::CompressedTexture2D::2669323203309610739::1708732260::1709076758::1::::<><>::
 image copy.png::CompressedTexture2D::8949041901566644936::1708924616::1709076758::1::::<><>::
 Screenshot 2024-02-26 at 2.59.55 PM.png::CompressedTexture2D::2566616486548550444::1708988506::1709076758::1::::<><>::
 Screenshot 2024-02-29 at 9.08.09 PM.png::CompressedTexture2D::4494821623887090369::1709269705::1709269723::1::::<><>::
 Screenshot 2024-02-29 at 9.59.11 PM.png::CompressedTexture2D::5707859095345009423::1709272862::1709272867::1::::<><>::
-::res://Tilesets/::1709269718
-60e4319e13a64ae0df0b7545_image22.png::CompressedTexture2D::6408791429245627968::1709096138::1709096144::1::::<><>::
-TX Plant.png::CompressedTexture2D::1322915022158866940::1709058731::1709076758::1::::<><>::
-TX Props.png::CompressedTexture2D::6553710969982989103::1709069853::1709076758::1::::<><>::
-TX Struct.png::CompressedTexture2D::5005395443357869844::1708987896::1709076758::1::::<><>::
-TX Tileset Grass.png::CompressedTexture2D::6159681745405445034::1708987744::1709076758::1::::<><>::
-TX Tileset Stone Ground.png::CompressedTexture2D::2038551166256866116::1708988118::1709076758::1::::<><>::
-TX Tileset Wall.png::CompressedTexture2D::2638313956163209837::1709069853::1709076758::1::::<><>::
+Screenshot 2024-03-08 at 4.13.00 PM.png::CompressedTexture2D::5664349542118104056::1709943204::1709943204::1::::<><>::
+::res://Tilesets/::1710194480
+::res://Tilesets/Building/::1710046771
+60e4319e13a64ae0df0b7545_image22.png::CompressedTexture2D::6408791429245627968::1709096138::1710046404::1::::<><>::
+TX Struct.png::CompressedTexture2D::5005395443357869844::1708987896::1710046391::1::::<><>::
+TX Tileset Wall.png::CompressedTexture2D::2638313956163209837::1709069853::1710046391::1::::<><>::
+::res://Tilesets/Ground/::1710194488
+ARRLv1TileSet.png::CompressedTexture2D::792372753781052545::1710194441::1710194480::1::::<><>::
+TX Tileset Grass.png::CompressedTexture2D::6159681745405445034::1708987744::1710046372::1::::<><>::
+TX Tileset Stone Ground.png::CompressedTexture2D::2038551166256866116::1708988118::1710046374::1::::<><>::
+::res://Tilesets/Scenery/::1710046401
+TX Plant.png::CompressedTexture2D::1322915022158866940::1709058731::1710046401::1::::<><>::
+TX Props.png::CompressedTexture2D::6553710969982989103::1709069853::1710046401::1::::<><>::
