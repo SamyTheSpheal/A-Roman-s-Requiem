@@ -1,10 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://nrtufipqail6"]
+[gd_scene load_steps=9 format=3 uid="uid://nrtufipqail6"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_exn42"]
-[ext_resource type="Texture2D" uid="uid://cnk6ut2r8bpkh" path="res://Sprites/Screenshot 2024-02-29 at 9.59.11 PM.png" id="2_jcoax"]
+[ext_resource type="Texture2D" uid="uid://cwi54yi50emdf" path="res://Sprites/ezgif-3-0ab51abf42.png" id="2_q2pbe"]
+[ext_resource type="Texture2D" uid="uid://dxwpobpoc18jo" path="res://Sprites/ezgif-3-959be37daf.png" id="3_ysnxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhbtc"]
-size = Vector2(17.3333, 4)
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f57ej"]
+size = Vector2(13.3333, 7.33333)
+
+[sub_resource type="Animation" id="Animation_mws8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v7swb"]
+resource_name = "enemy_tall_run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vp7hq"]
+_data = {
+"RESET": SubResource("Animation_mws8i"),
+"enemy_tall_run": SubResource("Animation_v7swb")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -12,17 +54,28 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_exn42")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.38776e-12, 2.08165e-12)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_jcoax")
-offset = Vector2(2.08165e-12, -250)
+position = Vector2(-1.38777e-12, -10.6667)
+texture = ExtResource("2_q2pbe")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-13.3333, 8.66667)
+position = Vector2(-0.666667, 5.33333)
 shape = SubResource("RectangleShape2D_lhbtc")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-1.38776e-12, 2.66667)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-13.3333, -8, -11.3333, -6, -10.6667, -7.33334, -8, -8, 16, -30.6667, 17.3333, -29.3333, -6, -5.33334, -6, -3.33334, -8, -2.66667, -4.66667, 2, -6, 2.66666, -10.0759, -1.40929, -17.3333, 4.66666, -18.6667, 4, -14, -0.666671, -12.5017, -3.83502, -16, -7.33334, -14, -8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.666667, 1.66666)
+shape = SubResource("RectangleShape2D_f57ej")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vp7hq")
+}
+
+[node name="Weapon" type="Sprite2D" parent="."]
+position = Vector2(-7.33333, -7.33333)
+texture = ExtResource("3_ysnxd")
+offset = Vector2(2.08165e-12, -12)

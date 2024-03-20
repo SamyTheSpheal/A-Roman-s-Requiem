@@ -4,8 +4,10 @@ extends CharacterBody2D
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
-@export var KNOCKBACK_POWER = 40
-@export var KNOCKBACK_RESISTANCE = 800
+@export var KNOCKBACK_POWER = 2000
+@export var KNOCKBACK_RESISTANCE = 500
+
+@export var RUN_ANIM_SPEED = 0.5
 
 enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 
@@ -24,6 +26,7 @@ func _physics_process(delta):
 	check_overlapping_bodies(delta)
 	if knocked_back:
 		knockback(current_knockback_speed, delta)
+	update_animation()
 
 func move(delta):
 	match stair_type:
@@ -52,11 +55,6 @@ func move(delta):
 		velocity += (axis * ACCELERATION * delta)
 		velocity = velocity.limit_length(target_speed)
 	
-	if velocity.x < 0:
-		$Sprite2D.scale.x = -abs($Sprite2D.scale.x)
-	elif velocity.x > 0:
-		$Sprite2D.scale.x = abs($Sprite2D.scale.x)
-	
 	move_and_slide()
 
 func knockback(speed, delta):
@@ -77,7 +75,15 @@ func check_overlapping_bodies(delta):
 	for body in overlapping_bodies:
 		if body.name == "Player":
 			body.damage()
+			body.knockback(KNOCKBACK_POWER, delta)
 
+func update_animation():
+	if velocity.length() != 0:
+		$AnimationPlayer.play("enemy_tall_run")
+		$AnimationPlayer.speed_scale = (velocity.length() / 50) * RUN_ANIM_SPEED
+	else:
+		$AnimationPlayer.play("enemy_tall_run")
+		
 func _on_stairs_right_body_entered(body):
 	stair_type = StairTypes.RIGHT
 func _on_stairs_left_body_entered(body):
