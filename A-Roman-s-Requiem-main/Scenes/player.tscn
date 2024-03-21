@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkprbqt261yqc"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xi3l1"]
+[ext_resource type="Texture2D" uid="uid://cmx4ak368712k" path="res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png" id="2_uw0ld"]
+[ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/Character Spritesheets/peterwalkcycle1.png" id="3_7ctya"]
+[ext_resource type="Texture2D" uid="uid://dp17qjwc3sqny" path="res://Sprites/d5idnkk-885e95e6-550d-426d-8755-a91c974444e0.jpg" id="3_hp57y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lky1d"]
+texture = ExtResource("2_uw0ld")
+axis_stretch_horizontal = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_132id"]
+size = Vector2(17, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6k0l6"]
+size = Vector2(38, 4)
+
+[sub_resource type="Animation" id="Animation_d7tmt"]
+resource_name = "peter_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_h8hwy"]
+resource_name = "peter_run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p38jt"]
+_data = {
+"peter_idle": SubResource("Animation_d7tmt"),
+"peter_run": SubResource("Animation_h8hwy")
+}
+
+[node name="Player" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("1_xi3l1")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -14.0
+offset_top = -37.0
+offset_right = 14.0
+offset_bottom = -33.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_lky1d")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.53674e-06, 3.8147e-06)
+shape = SubResource("RectangleShape2D_132id")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -12)
+texture = ExtResource("3_7ctya")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+vframes = 5
+frame = 4
+
+[node name="SwordHitbox" type="Area2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(21, 3)
+shape = SubResource("RectangleShape2D_6k0l6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SwordHitbox"]
+position = Vector2(21, 3)
+scale = Vector2(0.0646901, 0.00652433)
+texture = ExtResource("3_hp57y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_p38jt")
+}
