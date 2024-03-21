@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xi3l1"]
 [ext_resource type="Texture2D" uid="uid://cmx4ak368712k" path="res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png" id="2_uw0ld"]
-[ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/peterwalkcycle1.png" id="3_e7nfw"]
+[ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/Character Spritesheets/peterwalkcycle1.png" id="3_7ctya"]
 [ext_resource type="Texture2D" uid="uid://dp17qjwc3sqny" path="res://Sprites/d5idnkk-885e95e6-550d-426d-8755-a91c974444e0.jpg" id="3_hp57y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lky1d"]
@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_132id")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -12)
-texture = ExtResource("3_e7nfw")
+texture = ExtResource("3_7ctya")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 vframes = 5
 frame = 4
