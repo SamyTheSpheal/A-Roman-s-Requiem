@@ -19,7 +19,7 @@ extends CharacterBody2D
 enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 
 @onready var health = 100
-@onready var velocity_multiplier = .5
+@onready var velocity_multiplier = 1
 @onready var axis = Vector2.ZERO
 @onready var speed_offset = 0
 @onready var target_speed = Vector2.ZERO
