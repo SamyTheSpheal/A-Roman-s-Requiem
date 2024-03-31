@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkprbqt261yqc"]
+[gd_scene load_steps=12 format=3 uid="uid://bkprbqt261yqc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xi3l1"]
 [ext_resource type="Texture2D" uid="uid://cmx4ak368712k" path="res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png" id="2_uw0ld"]
 [ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/peterwalkcycle1.png" id="3_7ctya"]
 [ext_resource type="Texture2D" uid="uid://cy68ahmuvpcva" path="res://Sprites/Character Attachments/swordofthespirit.png" id="4_xl3g1"]
+[ext_resource type="Texture2D" uid="uid://bycw5wkr6n4p1" path="res://Sprites/HUD GUI Elements/velocitymeter.png" id="5_r6qkl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lky1d"]
 texture = ExtResource("2_uw0ld")
@@ -59,10 +60,10 @@ y_sort_enabled = true
 script = ExtResource("1_xi3l1")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -14.0
-offset_top = -37.0
-offset_right = 14.0
-offset_bottom = -33.0
+offset_left = -11.0
+offset_top = -38.0
+offset_right = 11.0
+offset_bottom = -34.0
 theme_override_styles/fill = SubResource("StyleBoxTexture_lky1d")
 step = 1.0
 value = 100.0
@@ -96,3 +97,8 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_p38jt")
 }
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-4, -38)
+scale = Vector2(1.10606, 1)
+texture = ExtResource("5_r6qkl")
