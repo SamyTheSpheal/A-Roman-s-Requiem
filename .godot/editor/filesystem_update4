@@ -1,5 +1,3 @@
-res://Scenes/level1.tscn
-res://Scenes/Enemy.gd
-res://Scripts/Player.gd
 res://Scenes/player.tscn
+res://Scenes/level1.tscn
 res://enemy.tscn
