@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
-@export var DASH_MULTIPLIER = 1.5
-@export var DASH_FRICTION = 400
+@export var DASH_MULTIPLIER = 40
+@export var DASH_FRICTION = 1000
 @export var HALF_SWING_ANGLE = 100
 @export var SWING_SPEED = 40
 @export var KNOCKBACK_POWER = 400
@@ -19,6 +19,7 @@ extends CharacterBody2D
 enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 
 @onready var health = 100
+@onready var velocity_multiplier = .5
 @onready var axis = Vector2.ZERO
 @onready var speed_offset = 0
 @onready var target_speed = Vector2.ZERO
@@ -90,7 +91,7 @@ func move(delta):
 	axis = axis.normalized()
 	
 	if axis.y == 0:
-		velocity.y = -AUTO_Y_MOVEMENT
+		velocity.y = -AUTO_Y_MOVEMENT * velocity_multiplier
 
 	if axis == Vector2.ZERO:
 		if velocity.length() > AUTO_Y_MOVEMENT:
@@ -104,7 +105,7 @@ func move(delta):
 			speed_offset = WALKSPEED * speed_multiplier
 		target_speed = Vector2(sign(axis.x) * (HORIZONTAL_MOVEMENT + speed_offset), -AUTO_Y_MOVEMENT + (sign(axis.y) * speed_offset))
 		velocity = target_speed
-		velocity = velocity.limit_length(max(HORIZONTAL_MOVEMENT, AUTO_Y_MOVEMENT) + speed_offset)
+		velocity = velocity.limit_length(max(HORIZONTAL_MOVEMENT, AUTO_Y_MOVEMENT * velocity_multiplier * .75) + speed_offset)
 
 	move_and_slide()
 

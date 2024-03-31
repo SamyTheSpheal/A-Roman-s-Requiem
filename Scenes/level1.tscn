@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://lj3i7ueb2wq8" path="res://Tilesets/ARRLv1TileSet.png" id="8_5mjju"]
 [ext_resource type="PackedScene" uid="uid://nrtufipqail6" path="res://enemy.tscn" id="8_bcoqa"]
 [ext_resource type="PackedScene" uid="uid://cklep3s8voota" path="res://smallenemy.tscn" id="10_owojf"]
-[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="11_qgwhv"]
+[ext_resource type="PackedScene" uid="uid://uga7qrnog472" path="res://camera_2d.tscn" id="12_qkfpd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ku2m"]
 texture = ExtResource("1_01mv4")
@@ -2756,14 +2756,10 @@ scale = Vector2(1, 1)
 position = Vector2(277, 2281)
 
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
-position = Vector2(243, 3027)
+position = Vector2(281, 3029)
 HORIZONTAL_MOVEMENT = 75
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(280, 2976)
-scale = Vector2(1.5, 1.5)
-zoom = Vector2(4, 4)
-script = ExtResource("11_qgwhv")
+[node name="Camera2D" parent="." instance=ExtResource("12_qkfpd")]
 
 [node name="longenemy2" parent="." instance=ExtResource("8_bcoqa")]
 position = Vector2(150, 2186)
