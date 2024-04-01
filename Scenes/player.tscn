@@ -65,8 +65,9 @@ offset_top = -38.0
 offset_right = 11.0
 offset_bottom = -34.0
 theme_override_styles/fill = SubResource("StyleBoxTexture_lky1d")
+max_value = 5.0
 step = 1.0
-value = 100.0
+value = 2.0
 show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

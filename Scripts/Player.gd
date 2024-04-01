@@ -19,7 +19,6 @@ extends CharacterBody2D
 enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 
 @onready var health = 100
-@onready var velocity_multiplier = 1
 @onready var axis = Vector2.ZERO
 @onready var speed_offset = 0
 @onready var target_speed = Vector2.ZERO
@@ -91,7 +90,7 @@ func move(delta):
 	axis = axis.normalized()
 	
 	if axis.y == 0:
-		velocity.y = -AUTO_Y_MOVEMENT * velocity_multiplier
+		velocity.y = -AUTO_Y_MOVEMENT * speed_multiplier
 
 	if axis == Vector2.ZERO:
 		if velocity.length() > AUTO_Y_MOVEMENT:
@@ -105,7 +104,7 @@ func move(delta):
 			speed_offset = WALKSPEED * speed_multiplier
 		target_speed = Vector2(sign(axis.x) * (HORIZONTAL_MOVEMENT + speed_offset), -AUTO_Y_MOVEMENT + (sign(axis.y) * speed_offset))
 		velocity = target_speed
-		velocity = velocity.limit_length(max(HORIZONTAL_MOVEMENT, AUTO_Y_MOVEMENT * velocity_multiplier * .75) + speed_offset)
+		velocity = velocity.limit_length(max(HORIZONTAL_MOVEMENT, AUTO_Y_MOVEMENT * speed_multiplier * .75) + speed_offset)
 
 	move_and_slide()
 
@@ -143,8 +142,18 @@ func slash(delta):
 			sword_collision = false
 
 func damage():
-	health -= 1
-	set_health_bar(health)
+	speed_multiplier -= .1
+	damage_flicker()
+	set_health_bar(speed_multiplier)
+	
+func damage_flicker():
+	modulate.a = .2
+	await get_tree().create_timer(.3).timeout
+	modulate.a = 1
+	await get_tree().create_timer(.3).timeout
+	modulate.a = .2
+	await get_tree().create_timer(.3).timeout
+	modulate.a = 1
 
 func knockback(speed, delta):
 	current_knockback_speed = speed
