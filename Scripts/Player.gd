@@ -112,7 +112,7 @@ func dash(delta):
 	if not dashing:
 		axis = get_global_mouse_position() - self.global_position
 		axis = axis.normalized()
-		velocity += axis * speed_offset * DASH_MULTIPLIER
+		velocity += axis * speed_offset * speed_multiplier * 40
 		dashing = true
 	else:
 		if velocity.length() > (DASH_FRICTION * delta):
