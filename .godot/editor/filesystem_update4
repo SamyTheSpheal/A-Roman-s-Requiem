@@ -2,4 +2,7 @@ res://Scenes/level1.tscn
 res://Scenes/player.tscn
 res://enemy.tscn
 res://camera_2d.tscn
+res://smallenemy.tscn
 res://Scripts/Player.gd
+res://Scenes/Enemy.gd
+res://smallenemy.gd

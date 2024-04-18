@@ -2748,11 +2748,11 @@ position = Vector2(918, 438)
 [node name="StairsLeft" type="Area2D" parent="TileMap"]
 position = Vector2(50, 442)
 
-[node name="longenemy" parent="." instance=ExtResource("8_bcoqa")]
+[node name="longenemy" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
 position = Vector2(316, 2107)
 scale = Vector2(1, 1)
 
-[node name="smallenemy" parent="." instance=ExtResource("10_owojf")]
+[node name="smallenemy" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(277, 2281)
 
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
@@ -2761,18 +2761,18 @@ HORIZONTAL_MOVEMENT = 75
 
 [node name="Camera2D" parent="." instance=ExtResource("12_qkfpd")]
 
-[node name="longenemy2" parent="." instance=ExtResource("8_bcoqa")]
+[node name="longenemy2" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
 position = Vector2(150, 2186)
 scale = Vector2(1, 1)
 
-[node name="longenemy3" parent="." instance=ExtResource("8_bcoqa")]
+[node name="longenemy3" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
 position = Vector2(134, 2493)
 scale = Vector2(1, 1)
 
-[node name="smallenemy2" parent="." instance=ExtResource("10_owojf")]
+[node name="smallenemy2" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(403, 2449)
 
-[node name="smallenemy3" parent="." instance=ExtResource("10_owojf")]
+[node name="smallenemy3" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(44, 2397)
 
 [connection signal="body_entered" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_entered"]

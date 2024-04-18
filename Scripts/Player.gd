@@ -7,12 +7,12 @@ extends CharacterBody2D
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
-@export var DASH_MULTIPLIER = 40
+@export var DASH_MULTIPLIER = 10
 @export var DASH_FRICTION = 1000
 @export var HALF_SWING_ANGLE = 100
 @export var SWING_SPEED = 40
-@export var KNOCKBACK_POWER = 400
-@export var KNOCKBACK_RESISTANCE = 500
+@export var KNOCKBACK_POWER = 1000
+@export var KNOCKBACK_RESISTANCE = 20
 
 @export var RUN_ANIM_SPEED = 1.1
 
@@ -35,9 +35,11 @@ enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 @onready var sword_start_rotation = 0
 @onready var sword_end_rotation = 0
 @onready var dead = false
+@onready var knockback_entity = null
 @onready var knocked_back = false
 @onready var knockback_axis = Vector2.ZERO
 @onready var current_knockback_speed = 0
+@onready var knockback_velocity = Vector2.ZERO
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -112,7 +114,7 @@ func dash(delta):
 	if not dashing:
 		axis = get_global_mouse_position() - self.global_position
 		axis = axis.normalized()
-		velocity += axis * speed_offset * speed_multiplier * 40
+		velocity += axis * speed_offset * speed_multiplier * DASH_MULTIPLIER
 		dashing = true
 	else:
 		if velocity.length() > (DASH_FRICTION * delta):
@@ -156,24 +158,23 @@ func damage_flicker():
 	modulate.a = 1
 
 func knockback(speed, delta):
-	current_knockback_speed = speed
 	if not knocked_back:
+		current_knockback_speed = speed
 		knocked_back = true
-		knockback_axis = -axis.normalized()
-		velocity += knockback_axis * current_knockback_speed * delta
+		knockback_axis = -(knockback_entity.global_position - self.global_position).normalized()
+		velocity += knockback_axis * current_knockback_speed
 	else:
 		current_knockback_speed -= KNOCKBACK_RESISTANCE
-		velocity += knockback_axis * current_knockback_speed * delta
+		velocity = knockback_axis * current_knockback_speed
 		if current_knockback_speed <= 0:
 			knocked_back = false
 	move_and_slide()
-
+	
 func check_overlapping_bodies(delta):
 	var overlapping_bodies = $SwordHitbox.get_overlapping_bodies()
 	for body in overlapping_bodies:
-		if body.name == "Enemy" and sword_collision:
+		if body.is_in_group("enemy") and sword_collision:
 			body.knockback(KNOCKBACK_POWER, delta)
-			print("e")
 			
 func set_health_bar(value):
 	$ProgressBar.value = value

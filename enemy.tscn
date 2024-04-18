@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://nrtufipqail6"]
+[gd_scene load_steps=11 format=3 uid="uid://nrtufipqail6"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_exn42"]
 [ext_resource type="Texture2D" uid="uid://b6t5hem2wp7gj" path="res://Sprites/Character Spritesheets/longitaliangrunt.png" id="2_xtvlu"]
@@ -49,6 +49,9 @@ _data = {
 "enemy_tall_run": SubResource("Animation_v7swb")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7ffl"]
+size = Vector2(25.1614, 4.16)
+
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(1.5, 1.5)
@@ -77,12 +80,21 @@ libraries = {
 }
 
 [node name="Arm" type="Sprite2D" parent="."]
-position = Vector2(-8, -8)
+position = Vector2(-6.66667, -12)
+rotation = 1.5708
 scale = Vector2(1.03333, 0.961538)
 texture = ExtResource("3_0wqhs")
+offset = Vector2(2.08165e-12, 4)
 
-[node name="Weapon" type="Sprite2D" parent="Arm"]
-position = Vector2(0.645161, 13.8667)
+[node name="Area2D" type="Area2D" parent="Arm"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/Area2D"]
+position = Vector2(-16.4517, 8.32)
+shape = SubResource("RectangleShape2D_l7ffl")
+
+[node name="Weapon" type="Sprite2D" parent="Arm/Area2D"]
+position = Vector2(0.645165, 8.32)
+rotation = -1.5708
 scale = Vector2(1, 0.997778)
 texture = ExtResource("4_2jvur")
 offset = Vector2(2.08165e-12, -12)
