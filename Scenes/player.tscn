@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkprbqt261yqc"]
+[gd_scene load_steps=14 format=3 uid="uid://bkprbqt261yqc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xi3l1"]
 [ext_resource type="Texture2D" uid="uid://cmx4ak368712k" path="res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png" id="2_uw0ld"]
 [ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/peterwalkcycle1.png" id="3_7ctya"]
 [ext_resource type="Texture2D" uid="uid://cy68ahmuvpcva" path="res://Sprites/Character Attachments/swordofthespirit.png" id="4_xl3g1"]
+[ext_resource type="Texture2D" uid="uid://c3svjv76p4sgv" path="res://Sprites/swish_diagonal.png" id="5_cvf6g"]
 [ext_resource type="Texture2D" uid="uid://bycw5wkr6n4p1" path="res://Sprites/HUD GUI Elements/velocitymeter.png" id="5_r6qkl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lky1d"]
@@ -48,10 +49,26 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_dc2va"]
+resource_name = "peter_swish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SwordHitbox/Swish:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p38jt"]
 _data = {
 "peter_idle": SubResource("Animation_d7tmt"),
-"peter_run": SubResource("Animation_h8hwy")
+"peter_run": SubResource("Animation_h8hwy"),
+"peter_swish": SubResource("Animation_dc2va")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -79,7 +96,6 @@ position = Vector2(1, -12)
 texture = ExtResource("3_7ctya")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 vframes = 5
-frame = 4
 
 [node name="SwordHitbox" type="Area2D" parent="."]
 position = Vector2(0, -15)
@@ -92,6 +108,12 @@ shape = SubResource("RectangleShape2D_6k0l6")
 position = Vector2(25, 3)
 rotation = 0.774926
 texture = ExtResource("4_xl3g1")
+
+[node name="Swish" type="Sprite2D" parent="SwordHitbox"]
+position = Vector2(36, -5)
+rotation = 0.785398
+texture = ExtResource("5_cvf6g")
+hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")

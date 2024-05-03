@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
 @export var KNOCKBACK_POWER = 200
-@export var KNOCKBACK_RESISTANCE = 30
+@export var KNOCKBACK_RESISTANCE = 65
 @export var DASH_MULTIPLIER = 2
 @export var DASH_FRICTION = 500
 @export var HALF_SWING_ANGLE = 100
@@ -39,6 +39,7 @@ func _physics_process(delta):
 		dash(delta)
 	else:
 		move(delta)
+		$Arm/Area2D/Swish.frame = 0
 	if knocked_back:
 		knockback(current_knockback_speed, delta)
 	check_overlapping_bodies(delta)
@@ -96,14 +97,22 @@ func slash(delta):
 		sword_hitbox.rotation = sword_start_rotation
 		slashing = true
 		sword_collision = true
+		$Arm/Area2D/Swish.frame = 1
 	else:
 		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)
 		var sine_progress = sin(progress * PI)
 		var adjusted_speed = lerp(1, SWING_SPEED, sine_progress)
 		sword_hitbox.rotation += deg_to_rad(adjusted_speed)
+		
+		if progress > 0.2 and progress <= 0.8:
+			$Arm/Area2D/Swish.frame = 2
+		else:
+			$Arm/Area2D/Swish.frame = 1
+			
 		if sword_hitbox.rotation > sword_end_rotation:
 			slashing = false
 			sword_collision = false
+			$Arm/Area2D/Swish.frame = 0
 			
 func knockback(speed, delta):
 	current_knockback_speed = speed

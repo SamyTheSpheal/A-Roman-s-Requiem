@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://swv5agras8ae"]
+[gd_scene load_steps=24 format=3 uid="uid://swv5agras8ae"]
 
 [ext_resource type="Texture2D" uid="uid://s33hnai4awrs" path="res://Tilesets/TX Plant.png" id="1_01mv4"]
+[ext_resource type="Script" path="res://Scenes/level1.gd" id="1_dpt2p"]
 [ext_resource type="Texture2D" uid="uid://ct02b8ruegmnq" path="res://Tilesets/TX Tileset Grass.png" id="2_357na"]
 [ext_resource type="Texture2D" uid="uid://cdkweqgs5domm" path="res://Tilesets/TX Struct.png" id="3_wa51j"]
 [ext_resource type="Texture2D" uid="uid://cxkp4govf4obo" path="res://Tilesets/60e4319e13a64ae0df0b7545_image22.png" id="3_x56s0"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://nrtufipqail6" path="res://enemy.tscn" id="8_bcoqa"]
 [ext_resource type="PackedScene" uid="uid://cklep3s8voota" path="res://smallenemy.tscn" id="10_owojf"]
 [ext_resource type="PackedScene" uid="uid://uga7qrnog472" path="res://camera_2d.tscn" id="12_qkfpd"]
+[ext_resource type="PackedScene" uid="uid://5fxou4xge7a7" path="res://Scenes/pause_menu.tscn" id="14_qv31s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ku2m"]
 texture = ExtResource("1_01mv4")
@@ -2729,6 +2731,7 @@ sources/8 = SubResource("TileSetAtlasSource_mcgmp")
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_dpt2p")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -2760,6 +2763,19 @@ position = Vector2(281, 3029)
 HORIZONTAL_MOVEMENT = 75
 
 [node name="Camera2D" parent="." instance=ExtResource("12_qkfpd")]
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("14_qv31s")]
+z_index = 1000
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.667
+offset_top = -539.333
+offset_right = -960.667
+offset_bottom = -539.333
+scale = Vector2(0.15, 0.15)
 
 [node name="longenemy2" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
 position = Vector2(150, 2186)

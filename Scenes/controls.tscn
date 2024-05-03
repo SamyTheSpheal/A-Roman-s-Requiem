@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://id765bim3d1b"]
+
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_4ywvt"]
+[ext_resource type="Texture2D" uid="uid://r6pvhme0yjwr" path="res://Sprites/Black.png" id="1_8r4aj"]
+[ext_resource type="Texture2D" uid="uid://bccncrr1mxibl" path="res://Sprites/logo.png" id="2_7sfx5"]
+
+[node name="controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ywvt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 1938.0
+offset_bottom = 1092.0
+texture = ExtResource("1_8r4aj")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 764.0
+offset_top = -67.0
+offset_right = 1146.0
+offset_bottom = 485.0
+texture = ExtResource("2_7sfx5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 431.0
+offset_right = 1284.0
+offset_bottom = 731.0
+theme_override_font_sizes/normal_font_size = 45
+text = "WASD - Move around
+Shift - Sprint
+Left Click - Dash and Slash"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 858.0
+offset_right = 1154.0
+offset_bottom = 949.0
+theme_override_font_sizes/font_size = 60
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

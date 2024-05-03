@@ -11,8 +11,8 @@ extends CharacterBody2D
 @export var DASH_FRICTION = 1000
 @export var HALF_SWING_ANGLE = 100
 @export var SWING_SPEED = 40
-@export var KNOCKBACK_POWER = 1000
-@export var KNOCKBACK_RESISTANCE = 20
+@export var KNOCKBACK_POWER = 2000
+@export var KNOCKBACK_RESISTANCE = 50
 
 @export var RUN_ANIM_SPEED = 1.1
 
@@ -134,14 +134,23 @@ func slash(delta):
 		sword_hitbox.rotation = sword_start_rotation
 		slashing = true
 		sword_collision = true
+		$SwordHitbox/Swish.frame = 1
 	else:
 		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)
 		var sine_progress = sin(progress * PI)
 		var adjusted_speed = lerp(1, SWING_SPEED, sine_progress)
 		sword_hitbox.rotation += deg_to_rad(adjusted_speed)
+		
+		# Update frame based on the progress
+		if progress > 0.2 and progress <= 0.8:
+			$SwordHitbox/Swish.frame = 2
+		else:
+			$SwordHitbox/Swish.frame = 1
+			
 		if sword_hitbox.rotation > sword_end_rotation:
 			slashing = false
 			sword_collision = false
+			$SwordHitbox/Swish.frame = 0
 
 func damage():
 	speed_multiplier -= .1

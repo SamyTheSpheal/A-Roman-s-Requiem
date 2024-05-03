@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
 @export var KNOCKBACK_POWER = 400
-@export var KNOCKBACK_RESISTANCE = 30
+@export var KNOCKBACK_RESISTANCE = 65
 @export var DASH_MULTIPLIER = 2
 @export var DASH_FRICTION = 500
 @export var HALF_SWING_ANGLE = 100
