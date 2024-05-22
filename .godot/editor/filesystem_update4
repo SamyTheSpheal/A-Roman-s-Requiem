@@ -1,13 +1,8 @@
 res://Scenes/level1.tscn
-res://main_menu.tscn
 res://Scenes/player.tscn
 res://enemy.tscn
 res://camera_2d.tscn
 res://smallenemy.tscn
 res://Scenes/main_menu.tscn
-res://Scenes/main_menu.gd
 res://Scenes/pause_menu.tscn
-res://Scenes/level1.gd
-res://Scenes/pause_menu.gd
 res://Scenes/controls.tscn
-res://Scenes/controls.gd

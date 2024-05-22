@@ -90,18 +90,18 @@ offset = Vector2(2.08165e-12, 4)
 [node name="Area2D" type="Area2D" parent="Arm"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/Area2D"]
-position = Vector2(-19.3549, 8.32)
+position = Vector2(12.2581, 8.31995)
 shape = SubResource("RectangleShape2D_l7ffl")
 
 [node name="Weapon" type="Sprite2D" parent="Arm/Area2D"]
-position = Vector2(0.645165, 8.32)
+position = Vector2(22.5807, 8.31991)
 rotation = -1.5708
 scale = Vector2(1, 0.997778)
 texture = ExtResource("4_2jvur")
 offset = Vector2(2.08165e-12, -12)
 
 [node name="Swish" type="Sprite2D" parent="Arm/Area2D"]
-position = Vector2(-17.4193, 22.1867)
+position = Vector2(15.484, 22.8799)
 rotation = -1.5708
 scale = Vector2(1.04, 0.967745)
 texture = ExtResource("5_gmc3i")
