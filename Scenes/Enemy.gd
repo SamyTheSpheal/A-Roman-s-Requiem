@@ -59,6 +59,9 @@ func move(delta):
 			y_bias = 0
 			speed_multiplier = 1
 	axis = player.get_position() - self.global_position
+	if axis.y < 0:
+		axis.x = 0
+		axis.y = 1.5
 		
 	axis = axis.normalized()
 	
