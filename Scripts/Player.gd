@@ -159,11 +159,11 @@ func damage():
 	
 func damage_flicker():
 	modulate.a = .2
-	await get_tree().create_timer(.3).timeout
+	await get_tree().create_timer(.3,false).timeout
 	modulate.a = 1
-	await get_tree().create_timer(.3).timeout
+	await get_tree().create_timer(.3,false).timeout
 	modulate.a = .2
-	await get_tree().create_timer(.3).timeout
+	await get_tree().create_timer(.3,false).timeout
 	modulate.a = 1
 
 func knockback(speed, delta):

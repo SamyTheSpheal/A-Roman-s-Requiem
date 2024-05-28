@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ds5ll3r06jijn" path="res://Sprites/gray-gradient-transparent-rectangle-shadow-png.png" id="1_j3n4l"]
 [ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_y8cvj"]
-[ext_resource type="Texture2D" uid="uid://bccncrr1mxibl" path="res://Sprites/logo.png" id="2_ofw4i"]
+[ext_resource type="Texture2D" uid="uid://ba6yr7m0mkj14" path="res://Sprites/pixellogo.png" id="3_csxsg"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -29,11 +29,11 @@ stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 136.0
-offset_right = 505.0
-offset_bottom = 594.0
-texture = ExtResource("2_ofw4i")
+offset_left = 125.0
+offset_top = 217.0
+offset_right = 526.0
+offset_bottom = 480.0
+texture = ExtResource("3_csxsg")
 expand_mode = 1
 stretch_mode = 4
 

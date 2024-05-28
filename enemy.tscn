@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://nrtufipqail6"]
+[gd_scene load_steps=13 format=3 uid="uid://nrtufipqail6"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_exn42"]
 [ext_resource type="Texture2D" uid="uid://b6t5hem2wp7gj" path="res://Sprites/Character Spritesheets/longitaliangrunt.png" id="2_xtvlu"]
 [ext_resource type="Texture2D" uid="uid://m65kd2l4cf0p" path="res://Sprites/Character Attachments/longitalianarm.png" id="3_0wqhs"]
 [ext_resource type="Texture2D" uid="uid://bfbcex6mxccrk" path="res://Sprites/Character Attachments/italianspear.png" id="4_2jvur"]
 [ext_resource type="Texture2D" uid="uid://dajh6lmv67c8a" path="res://Sprites/swish_tall.png" id="5_gmc3i"]
+[ext_resource type="Texture2D" uid="uid://cnwrin4dto4a0" path="res://Sprites/Character Attachments/italiantalldeath.png" id="6_mw3u2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhbtc"]
 size = Vector2(12, 4)
@@ -107,3 +108,8 @@ scale = Vector2(1.04, 0.967745)
 texture = ExtResource("5_gmc3i")
 hframes = 3
 frame = 2
+
+[node name="Death" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-0.666667, -10.6667)
+texture = ExtResource("6_mw3u2")

@@ -1,11 +1,10 @@
+res://Scenes/main_menu.tscn
 res://Scenes/level1.tscn
-res://Tilesets/meadowanimated.tres
 res://Scenes/player.tscn
 res://enemy.tscn
 res://camera_2d.tscn
 res://smallenemy.tscn
-res://Scenes/main_menu.tscn
 res://Scenes/pause_menu.tscn
 res://Scenes/controls.tscn
 res://Scenes/Enemy.gd
-res://smallenemy.gd
+res://Scripts/Player.gd

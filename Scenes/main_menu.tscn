@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7eyjlvq3xeyy" path="res://Sprites/Screenshot 2024-05-02 at 1.43.19 PM.png" id="2_4n8su"]
 [ext_resource type="Texture2D" uid="uid://exes5m7xjs36" path="res://Sprites/Screenshot 2024-05-02 at 1.44.52 PM.png" id="2_f0dgw"]
 [ext_resource type="Texture2D" uid="uid://ds5ll3r06jijn" path="res://Sprites/gray-gradient-transparent-rectangle-shadow-png.png" id="4_8tpvu"]
-[ext_resource type="Texture2D" uid="uid://bccncrr1mxibl" path="res://Sprites/logo.png" id="5_c1pn4"]
+[ext_resource type="Texture2D" uid="uid://ba6yr7m0mkj14" path="res://Sprites/pixellogo.png" id="5_o536d"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -39,16 +39,6 @@ offset_right = 803.0
 offset_bottom = 1360.0
 texture = ExtResource("4_8tpvu")
 
-[node name="TextureRect4" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 84.0
-offset_top = -83.0
-offset_right = 578.0
-offset_bottom = 491.0
-texture = ExtResource("5_c1pn4")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 164.0
@@ -71,6 +61,14 @@ text = "CONTROLS"
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "QUIT"
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 22.0
+offset_right = 593.0
+offset_bottom = 388.0
+texture = ExtResource("5_o536d")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]

@@ -26,12 +26,14 @@ enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 @onready var knocked_back = false
 @onready var dashing = false
 @onready var slashing = false
+@onready var isdead = false
 @onready var current_knockback_speed = 0
 @onready var sword_direction = 0
 @onready var sword_hitbox = $Arm
 @onready var sword_collision = !$Arm/Area2D/CollisionShape2D.disabled
 @onready var sword_start_rotation = 0
 @onready var sword_end_rotation = 0
+@onready var opacity = 1
 	
 func _physics_process(delta):
 	if (player.global_position.distance_to(self.global_position) <= ATTACK_DISTANCE):
@@ -46,6 +48,8 @@ func _physics_process(delta):
 	update_animation()
 
 func move(delta):
+	if isdead:
+		return
 	match stair_type:
 		StairTypes.UP_DOWN:
 			speed_multiplier = STAIRS_MULTIPLIER
@@ -122,13 +126,33 @@ func knockback(speed, delta):
 	if not knocked_back:
 		knocked_back = true
 		knockback_axis = -axis.normalized()
+		var angle = global_position.angle_to_point(player.global_position)
 		velocity += knockback_axis * current_knockback_speed * delta
+		death(angle)
 	else:
 		current_knockback_speed -= KNOCKBACK_RESISTANCE
 		velocity += knockback_axis * current_knockback_speed * delta
 		if current_knockback_speed <= 0:
 			knocked_back = false
 	move_and_slide()
+	
+func death(angle):
+	$Sprite2D.visible = false
+	$Arm.visible = false
+	$Death.visible = true
+	$Death.rotation = angle
+	$CollisionShape2D.disabled = true 
+	$Arm/Area2D/CollisionShape2D.disabled = true
+	isdead = true
+	await get_tree().create_timer(1).timeout
+	disappear()
+	
+func disappear():
+	while opacity > 0:
+		opacity -= .1
+		modulate.a = opacity
+		await get_tree().create_timer(.3,false).timeout
+	queue_free()
 	
 func check_overlapping_bodies(delta):
 	var overlapping_bodies = $Arm/Area2D.get_overlapping_bodies()
