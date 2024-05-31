@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcq7c4m2vdy8o"]
+
+[ext_resource type="Script" path="res://straightlinenemy.gd" id="1_e4taq"]
+
+[node name="Straight Runner" type="CharacterBody2D"]
+script = ExtResource("1_e4taq")

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="TestGame"
+config/name="A Roman's Requiem"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Sprites/icon.svg"

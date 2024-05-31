@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var WALK_SPEED = 95
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
-@export var STAIRS_MULTIPLIER = 0.75
+@export var STAIRS_MULTIPLIER = 3
 @export var KNOCKBACK_POWER = 200
 @export var KNOCKBACK_RESISTANCE = 65
 @export var DASH_MULTIPLIER = 2
@@ -36,10 +36,7 @@ enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 @onready var opacity = 1
 	
 func _physics_process(delta):
-	if (player.global_position.distance_to(self.global_position) <= ATTACK_DISTANCE) and not isdead:
-		slash(delta)
-		dash(delta)
-	elif not isdead:
+	if not isdead:
 		move(delta)
 		$Arm/Area2D/Swish.frame = 0
 	if knocked_back:
@@ -52,18 +49,16 @@ func move(delta):
 		StairTypes.UP_DOWN:
 			speed_multiplier = STAIRS_MULTIPLIER
 		StairTypes.RIGHT:
-			y_bias = -sign(axis.x)
+			y_bias = 0
 			speed_multiplier = STAIRS_MULTIPLIER
 		StairTypes.LEFT:
-			y_bias = sign(axis.x)
+			y_bias = 0
 			speed_multiplier = STAIRS_MULTIPLIER
 		StairTypes.NONE:
 			y_bias = 0
 			speed_multiplier = 1
-	axis = player.get_position() - self.global_position
-	if axis.y < 0:
-		axis.x = 0
-		axis.y = 1.5
+	axis.x = 0
+	axis.y = 4
 		
 	axis = axis.normalized()
 	
@@ -77,47 +72,6 @@ func move(delta):
 		velocity += (axis * ACCELERATION * delta)
 		velocity = velocity.limit_length(target_speed)
 	move_and_slide()
-
-func dash(delta):
-	if not dashing:
-		axis =  player.global_position - self.global_position
-		axis = axis.normalized()
-		velocity += axis * WALK_SPEED * DASH_MULTIPLIER
-		dashing = true
-	else:
-		if velocity.length() > (DASH_FRICTION * delta):
-			velocity -= velocity.normalized() * (DASH_FRICTION * delta)
-		else:
-			velocity = Vector2.ZERO
-			dashing = false
-		
-	move_and_slide()
-
-func slash(delta):
-	if not slashing:
-		var sword_axis = get_global_mouse_position() - sword_hitbox.global_position
-		sword_direction = sword_axis.angle()
-		sword_start_rotation = sword_direction + deg_to_rad(-HALF_SWING_ANGLE)
-		sword_end_rotation = sword_direction + deg_to_rad(HALF_SWING_ANGLE)
-		sword_hitbox.rotation = sword_start_rotation
-		slashing = true
-		sword_collision = true
-		$Arm/Area2D/Swish.frame = 1
-	else:
-		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)
-		var sine_progress = sin(progress * PI)
-		var adjusted_speed = lerp(1, SWING_SPEED, sine_progress)
-		sword_hitbox.rotation += deg_to_rad(adjusted_speed)
-		
-		if progress > 0.2 and progress <= 0.8:
-			$Arm/Area2D/Swish.frame = 2
-		else:
-			$Arm/Area2D/Swish.frame = 1
-			
-		if sword_hitbox.rotation > sword_end_rotation:
-			slashing = false
-			sword_collision = false
-			$Arm/Area2D/Swish.frame = 0
 			
 func knockback(speed, delta):
 	current_knockback_speed = speed

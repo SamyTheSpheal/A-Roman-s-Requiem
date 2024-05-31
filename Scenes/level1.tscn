@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://swv5agras8ae"]
+[gd_scene load_steps=16 format=3 uid="uid://swv5agras8ae"]
 
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="1_dpt2p"]
 [ext_resource type="Texture2D" uid="uid://cxiwuqq6h3qis" path="res://Tilesets/ARRLv1Tileset3.png" id="4_ywgn4"]
+[ext_resource type="Script" path="res://straightlinenemy.gd" id="6_xigux"]
 [ext_resource type="PackedScene" uid="uid://bkprbqt261yqc" path="res://Scenes/player.tscn" id="7_wf2d5"]
 [ext_resource type="Texture2D" uid="uid://lj3i7ueb2wq8" path="res://Tilesets/ARRLv1TileSet.png" id="8_5mjju"]
 [ext_resource type="PackedScene" uid="uid://nrtufipqail6" path="res://enemy.tscn" id="8_bcoqa"]
@@ -505,11 +506,14 @@ position = Vector2(918, 438)
 position = Vector2(50, 442)
 
 [node name="longenemy" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(316, 2107)
+position = Vector2(324, 2857)
 scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
 
 [node name="smallenemy" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(277, 2281)
+script = null
 
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
 position = Vector2(281, 3029)
@@ -529,20 +533,6 @@ offset_top = -539.333
 offset_right = -960.667
 offset_bottom = -539.333
 scale = Vector2(0.15, 0.15)
-
-[node name="longenemy2" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(150, 2186)
-scale = Vector2(1, 1)
-
-[node name="longenemy3" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(134, 2493)
-scale = Vector2(1, 1)
-
-[node name="smallenemy2" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(403, 2449)
-
-[node name="smallenemy3" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(44, 2397)
 
 [connection signal="body_entered" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_entered"]
 [connection signal="body_exited" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_exited"]

@@ -36,10 +36,10 @@ enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 @onready var opacity = 1
 	
 func _physics_process(delta):
-	if (player.global_position.distance_to(self.global_position) <= ATTACK_DISTANCE):
+	if (player.global_position.distance_to(self.global_position) <= ATTACK_DISTANCE) and not isdead:
 		slash(delta)
 		dash(delta)
-	else:
+	elif not isdead:
 		move(delta)
 		$Arm/Area2D/Swish.frame = 0
 	if knocked_back:
@@ -48,8 +48,6 @@ func _physics_process(delta):
 	update_animation()
 
 func move(delta):
-	if isdead:
-		return
 	match stair_type:
 		StairTypes.UP_DOWN:
 			speed_multiplier = STAIRS_MULTIPLIER

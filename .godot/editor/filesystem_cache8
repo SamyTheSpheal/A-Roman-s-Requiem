@@ -1,23 +1,25 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1716865891
-camera_2d.tscn::PackedScene::1416221151934880063::1716865891::0::1::::<><>::res://Scenes/Camera2D.gd
-enemy.tscn::PackedScene::948739003532206357::1716865891::0::1::::<><>::res://Scenes/Enemy.gd<>uid://b6t5hem2wp7gj::::res://Sprites/Character Spritesheets/longitaliangrunt.png<>uid://m65kd2l4cf0p::::res://Sprites/Character Attachments/longitalianarm.png<>uid://bfbcex6mxccrk::::res://Sprites/Character Attachments/italianspear.png<>uid://dajh6lmv67c8a::::res://Sprites/swish_tall.png<>uid://cnwrin4dto4a0::::res://Sprites/Character Attachments/italiantalldeath.png
-smallenemy.gd::GDScript::-1::1716773593::0::1::::<>CharacterBody2D<>::
-smallenemy.tscn::PackedScene::5497709113929105438::1716865891::0::1::::<><>::res://smallenemy.gd<>uid://rq4ljpl1yixl::::res://Sprites/Character Spritesheets/smallitaliangrunt.png<>uid://skw6ccngjs01::::res://Sprites/Character Attachments/smallitalianarm.png<>uid://b4wf5iv6tuq2l::::res://Sprites/Character Attachments/italian sword.png
-::res://Scenes/::1716865891
+::res://::1716948240
+camera_2d.tscn::PackedScene::1416221151934880063::1716948240::0::1::::<><>::res://Scenes/Camera2D.gd
+enemy.tscn::PackedScene::948739003532206357::1716948240::0::1::::<><>::res://Scenes/Enemy.gd<>uid://b6t5hem2wp7gj::::res://Sprites/Character Spritesheets/longitaliangrunt.png<>uid://m65kd2l4cf0p::::res://Sprites/Character Attachments/longitalianarm.png<>uid://bfbcex6mxccrk::::res://Sprites/Character Attachments/italianspear.png<>uid://dajh6lmv67c8a::::res://Sprites/swish_tall.png<>uid://cnwrin4dto4a0::::res://Sprites/Character Attachments/italiantalldeath.png
+straight_runner.tscn::PackedScene::7334617840746434456::1716947623::0::1::::<><>::res://straightlinenemy.gd
+straightlinenemy.gd::GDScript::-1::1716948178::0::1::::<>CharacterBody2D<>::
+smallenemy.gd::GDScript::-1::1716946012::0::1::::<>CharacterBody2D<>::
+smallenemy.tscn::PackedScene::5497709113929105438::1716948240::0::1::::<><>::res://smallenemy.gd<>uid://rq4ljpl1yixl::::res://Sprites/Character Spritesheets/smallitaliangrunt.png<>uid://skw6ccngjs01::::res://Sprites/Character Attachments/smallitalianarm.png<>uid://b4wf5iv6tuq2l::::res://Sprites/Character Attachments/italian sword.png<>uid://gdyo0v476mtr::::res://Sprites/Character Attachments/italiansmalldeath.png<>uid://dajh6lmv67c8a::::res://Sprites/swish_tall.png
+::res://Scenes/::1716948240
 Camera2D.gd::GDScript::-1::1711862368::0::1::::<>Camera2D<>::
 controls.gd::GDScript::-1::1714717411::0::1::::<>Control<>::
-controls.tscn::PackedScene::569703763371950049::1716865891::0::1::::<><>::res://Scenes/controls.gd<>uid://r6pvhme0yjwr::::res://Sprites/Black.png<>uid://bccncrr1mxibl::::res://Sprites/logo.png
-Enemy.gd::GDScript::-1::1716865891::0::1::::<>CharacterBody2D<>::
+controls.tscn::PackedScene::569703763371950049::1716948240::0::1::::<><>::res://Scenes/controls.gd<>uid://r6pvhme0yjwr::::res://Sprites/Black.png<>uid://bccncrr1mxibl::::res://Sprites/logo.png
+Enemy.gd::GDScript::-1::1716945991::0::1::::<>CharacterBody2D<>::
 level1.gd::GDScript::-1::1714717411::0::1::::<>Node2D<>::
-level1.tscn::PackedScene::1310144136781114936::1716865891::0::1::::<><>::res://Scenes/level1.gd<>uid://cxiwuqq6h3qis::::res://Tilesets/ARRLv1Tileset3.png<>uid://bkprbqt261yqc::::res://Scenes/player.tscn<>uid://lj3i7ueb2wq8::::res://Tilesets/ARRLv1TileSet.png<>uid://nrtufipqail6::::res://enemy.tscn<>uid://cklep3s8voota::::res://smallenemy.tscn<>uid://yju3hx8b3n2f::::res://Tilesets/Ground/ARRLv1TileSet2.png<>uid://uga7qrnog472::::res://camera_2d.tscn<>uid://5fxou4xge7a7::::res://Scenes/pause_menu.tscn
+level1.tscn::PackedScene::1310144136781114936::1716948240::0::1::::<><>::res://Scenes/level1.gd<>uid://cxiwuqq6h3qis::::res://Tilesets/ARRLv1Tileset3.png<>res://straightlinenemy.gd<>uid://bkprbqt261yqc::::res://Scenes/player.tscn<>uid://lj3i7ueb2wq8::::res://Tilesets/ARRLv1TileSet.png<>uid://nrtufipqail6::::res://enemy.tscn<>uid://cklep3s8voota::::res://smallenemy.tscn<>uid://yju3hx8b3n2f::::res://Tilesets/Ground/ARRLv1TileSet2.png<>uid://uga7qrnog472::::res://camera_2d.tscn<>uid://5fxou4xge7a7::::res://Scenes/pause_menu.tscn
 main_menu.gd::GDScript::-1::1714717411::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::8993135939846138397::1716865891::0::1::::<><>::res://Scenes/main_menu.gd<>uid://b7eyjlvq3xeyy::::res://Sprites/Screenshot 2024-05-02 at 1.43.19 PM.png<>uid://exes5m7xjs36::::res://Sprites/Screenshot 2024-05-02 at 1.44.52 PM.png<>uid://ds5ll3r06jijn::::res://Sprites/gray-gradient-transparent-rectangle-shadow-png.png<>uid://ba6yr7m0mkj14::::res://Sprites/pixellogo.png
+main_menu.tscn::PackedScene::8993135939846138397::1716948240::0::1::::<><>::res://Scenes/main_menu.gd<>uid://b7eyjlvq3xeyy::::res://Sprites/Screenshot 2024-05-02 at 1.43.19 PM.png<>uid://exes5m7xjs36::::res://Sprites/Screenshot 2024-05-02 at 1.44.52 PM.png<>uid://ds5ll3r06jijn::::res://Sprites/gray-gradient-transparent-rectangle-shadow-png.png<>uid://ba6yr7m0mkj14::::res://Sprites/pixellogo.png
 pause_menu.gd::GDScript::-1::1714717411::0::1::::<>Control<>::
-pause_menu.tscn::PackedScene::2117409786179125568::1716865891::0::1::::<><>::uid://ds5ll3r06jijn::::res://Sprites/gray-gradient-transparent-rectangle-shadow-png.png<>res://Scenes/pause_menu.gd<>uid://ba6yr7m0mkj14::::res://Sprites/pixellogo.png
-player.tscn::PackedScene::3120309632049375586::1716865891::0::1::::<><>::res://Scripts/Player.gd<>uid://cmx4ak368712k::::res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png<>uid://cq5w4vk8t1vra::::res://Sprites/peterwalkcycle1.png<>uid://cy68ahmuvpcva::::res://Sprites/Character Attachments/swordofthespirit.png<>uid://c3svjv76p4sgv::::res://Sprites/swish_diagonal.png<>uid://bycw5wkr6n4p1::::res://Sprites/HUD GUI Elements/velocitymeter.png
-::res://Scripts/::1716864560
-Player.gd::GDScript::-1::1716864560::0::1::::<>CharacterBody2D<>::
+pause_menu.tscn::PackedScene::2117409786179125568::1716948240::0::1::::<><>::uid://ds5ll3r06jijn::::res://Sprites/gray-gradient-transparent-rectangle-shadow-png.png<>res://Scenes/pause_menu.gd<>uid://ba6yr7m0mkj14::::res://Sprites/pixellogo.png
+player.tscn::PackedScene::3120309632049375586::1716948240::0::1::::<><>::res://Scripts/Player.gd<>uid://cmx4ak368712k::::res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png<>uid://cq5w4vk8t1vra::::res://Sprites/peterwalkcycle1.png<>uid://cy68ahmuvpcva::::res://Sprites/Character Attachments/swordofthespirit.png<>uid://c3svjv76p4sgv::::res://Sprites/swish_diagonal.png<>uid://bycw5wkr6n4p1::::res://Sprites/HUD GUI Elements/velocitymeter.png
+::res://Scripts/::1716948213
+Player.gd::GDScript::-1::1716948213::0::1::::<>CharacterBody2D<>::
 ::res://Sprites/::1716860920
 Black.png::CompressedTexture2D::1258154695203111921::1714717411::1714717411::1::::<><>::
 d5idnkk-885e95e6-550d-426d-8755-a91c974444e0.jpg::CompressedTexture2D::8267740550551211426::1711853635::1711853635::1::::<><>::
@@ -38,8 +40,9 @@ Screenshot 2024-05-02 at 1.43.19 PM.png::CompressedTexture2D::4642195082060953
 Screenshot 2024-05-02 at 1.44.52 PM.png::CompressedTexture2D::328512670880060503::1714717411::1714717411::1::::<><>::
 swish_diagonal.png::CompressedTexture2D::6776580071671223009::1714717411::1714717411::1::::<><>::
 swish_tall.png::CompressedTexture2D::7178322426717594234::1714717411::1714717411::1::::<><>::
-::res://Sprites/Character Attachments/::1716863138
+::res://Sprites/Character Attachments/::1716944192
 italian sword.png::CompressedTexture2D::4467671072628722385::1711853635::1711855965::1::::<><>::
+italiansmalldeath.png::CompressedTexture2D::428809750917706655::1716944191::1716944192::1::::<><>::
 italianspear.png::CompressedTexture2D::2739559113300507796::1711853635::1711855965::1::::<><>::
 italiantalldeath.png::CompressedTexture2D::5731759848263367629::1716863088::1716863138::1::::<><>::
 longitalianarm.png::CompressedTexture2D::908101401572682869::1711853635::1711855965::1::::<><>::
@@ -51,10 +54,11 @@ peterwalkcycle1.png::CompressedTexture2D::5959182880044821046::1711853635::17118
 smallitaliangrunt.png::CompressedTexture2D::1228021318852393529::1711853635::1711855965::1::::<><>::
 ::res://Sprites/HUD GUI Elements/::1711865925
 velocitymeter.png::CompressedTexture2D::4076472205948127876::1711865925::1711858576::1::::<><>::
-::res://Tilesets/::1716771597
+::res://Tilesets/::1716947077
 60e4319e13a64ae0df0b7545_image22.png::CompressedTexture2D::6408791429245627968::1711853635::1711853635::1::::<><>::
 ARRLv1Tileset3.png::CompressedTexture2D::6405072149321830034::1716354043::1716354045::1::::<><>::
 ARRLv1TileSet.png::CompressedTexture2D::792372753781052545::1711853635::1711853635::1::::<><>::
+enemy.tscn::PackedScene::-1::1716947077::0::1::::<><>::
 meadowgrassanimation.png::CompressedTexture2D::3503300805844091035::1716531338::1716531339::1::::<><>::
 TX Plant.png::CompressedTexture2D::1322915022158866940::1711853635::1711853635::1::::<><>::
 TX Props.png::CompressedTexture2D::6553710969982989103::1711853635::1711853635::1::::<><>::
