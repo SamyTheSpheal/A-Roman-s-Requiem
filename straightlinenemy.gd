@@ -57,8 +57,8 @@ func move(delta):
 		StairTypes.NONE:
 			y_bias = 0
 			speed_multiplier = 1
+	axis = player.get_position() - self.global_position
 	axis.x = 0
-	axis.y = 4
 		
 	axis = axis.normalized()
 	
@@ -76,6 +76,7 @@ func move(delta):
 func knockback(speed, delta):
 	current_knockback_speed = speed
 	if not knocked_back:
+		axis = player.get_position() - self.global_position
 		knocked_back = true
 		knockback_axis = -axis.normalized()
 		var angle = global_position.angle_to_point(player.global_position)

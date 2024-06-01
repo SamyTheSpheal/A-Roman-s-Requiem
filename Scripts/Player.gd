@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
-@export var DASH_MULTIPLIER = 10
-@export var DASH_FRICTION = 1000
+@export var DASH_MULTIPLIER = 500
+@export var DASH_FRICTION = 0
 @export var HALF_SWING_ANGLE = 100
 @export var SWING_SPEED = 40
 @export var KNOCKBACK_POWER = 2000
@@ -60,8 +60,6 @@ func _ready():
 	
 func _physics_process(delta):
 	if not dead:
-		if left_click_just_pressed or dashing:
-			dash(delta)
 		if left_click_just_pressed or slashing:
 			slash(delta)
 		if not dashing:
@@ -134,6 +132,7 @@ func slash(delta):
 		sword_hitbox.rotation = sword_start_rotation
 		slashing = true
 		sword_collision = true
+		velocity += axis * speed_offset * speed_multiplier * DASH_MULTIPLIER
 		$SwordHitbox/Swish.frame = 1
 	else:
 		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)

@@ -61,9 +61,6 @@ func move(delta):
 			y_bias = 0
 			speed_multiplier = 1
 	axis = player.get_position() - self.global_position
-	if axis.y < 0:
-		axis.x = 0
-		axis.y = 1.5
 		
 	axis = axis.normalized()
 	
@@ -123,7 +120,7 @@ func knockback(speed, delta):
 	current_knockback_speed = speed
 	if not knocked_back:
 		knocked_back = true
-		knockback_axis = -axis.normalized()
+		knockback_axis = (self.global_position - player.global_position).normalized()
 		var angle = global_position.angle_to_point(player.global_position)
 		velocity += knockback_axis * current_knockback_speed * delta
 		death(angle)

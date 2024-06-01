@@ -506,14 +506,21 @@ position = Vector2(918, 438)
 position = Vector2(50, 442)
 
 [node name="longenemy" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(324, 2857)
+position = Vector2(210, 2822)
+scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="longenemy2" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
+position = Vector2(344, 2546)
 scale = Vector2(1, 1)
 script = ExtResource("6_xigux")
 STAIRS_MULTIPLIER = 3
 
 [node name="smallenemy" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(277, 2281)
-script = null
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
 
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
 position = Vector2(281, 3029)
