@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var CAMERA_SPEED = 50
+@export var CAMERA_SPEED = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -13,4 +13,4 @@ func _physics_process(delta):
 	var overlapping_bodies = $Area2D.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body.name == "Player":
-			body.damage()
+			body.death()

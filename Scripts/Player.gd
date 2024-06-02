@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
-@export var DASH_MULTIPLIER = 500
-@export var DASH_FRICTION = 0
+@export var DASH_MULTIPLIER = 50
+@export var DASH_FRICTION = 9999
 @export var HALF_SWING_ANGLE = 100
 @export var SWING_SPEED = 40
 @export var KNOCKBACK_POWER = 2000
@@ -62,6 +62,8 @@ func _physics_process(delta):
 	if not dead:
 		if left_click_just_pressed or slashing:
 			slash(delta)
+		if left_click_just_pressed or dashing:
+			dash(delta)
 		if not dashing:
 			move(delta)
 		if knocked_back:
@@ -69,6 +71,11 @@ func _physics_process(delta):
 		update_just_pressed()
 		check_overlapping_bodies(delta)
 		update_animation()
+	elif dead:
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+func death():
+	dead = true
 	
 func move(delta):
 	match stair_type:
@@ -112,7 +119,7 @@ func dash(delta):
 	if not dashing:
 		axis = get_global_mouse_position() - self.global_position
 		axis = axis.normalized()
-		velocity += axis * speed_offset * speed_multiplier * DASH_MULTIPLIER
+		velocity += axis * speed_offset * DASH_MULTIPLIER
 		dashing = true
 	else:
 		if velocity.length() > (DASH_FRICTION * delta):
@@ -133,6 +140,8 @@ func slash(delta):
 		slashing = true
 		sword_collision = true
 		velocity += axis * speed_offset * speed_multiplier * DASH_MULTIPLIER
+		speed_multiplier -= .07
+		set_health_bar(speed_multiplier)
 		$SwordHitbox/Swish.frame = 1
 	else:
 		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)
@@ -150,10 +159,16 @@ func slash(delta):
 			slashing = false
 			sword_collision = false
 			$SwordHitbox/Swish.frame = 0
+			
+			
 
 func damage():
 	speed_multiplier -= .1
 	damage_flicker()
+	set_health_bar(speed_multiplier)
+	
+func enemy_hit():
+	speed_multiplier += .1
 	set_health_bar(speed_multiplier)
 	
 func damage_flicker():
@@ -182,10 +197,11 @@ func check_overlapping_bodies(delta):
 	var overlapping_bodies = $SwordHitbox.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body.is_in_group("enemy") and sword_collision:
+			enemy_hit()
 			body.knockback(KNOCKBACK_POWER, delta)
 			
 func set_health_bar(value):
-	$ProgressBar.value = value
+	$ProgressBar.value = value * 50
 
 func update_animation():
 	if velocity.length() != 0:

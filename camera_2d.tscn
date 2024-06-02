@@ -6,13 +6,14 @@
 size = Vector2(803.333, 227.333)
 
 [node name="Camera2D" type="Camera2D"]
-position = Vector2(280, 2976)
+position = Vector2(279, 2916)
 scale = Vector2(1.5, 1.5)
 zoom = Vector2(4, 4)
 script = ExtResource("1_n3cem")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 3.33333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.666672, 193.667)
+position = Vector2(-1.99999, 258)
 shape = SubResource("RectangleShape2D_i05ol")

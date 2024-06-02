@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://swv5agras8ae"]
+[gd_scene load_steps=18 format=3 uid="uid://swv5agras8ae"]
 
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="1_dpt2p"]
+[ext_resource type="Texture2D" uid="uid://bp6a38obx80mh" path="res://Tilesets/meadowgrassanimation.png" id="2_4m46f"]
 [ext_resource type="Texture2D" uid="uid://cxiwuqq6h3qis" path="res://Tilesets/ARRLv1Tileset3.png" id="4_ywgn4"]
 [ext_resource type="Script" path="res://straightlinenemy.gd" id="6_xigux"]
 [ext_resource type="PackedScene" uid="uid://bkprbqt261yqc" path="res://Scenes/player.tscn" id="7_wf2d5"]
@@ -10,6 +11,29 @@
 [ext_resource type="Texture2D" uid="uid://yju3hx8b3n2f" path="res://Tilesets/Ground/ARRLv1TileSet2.png" id="10_r8b5k"]
 [ext_resource type="PackedScene" uid="uid://uga7qrnog472" path="res://camera_2d.tscn" id="12_qkfpd"]
 [ext_resource type="PackedScene" uid="uid://5fxou4xge7a7" path="res://Scenes/pause_menu.tscn" id="14_qv31s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olkvo"]
+texture = ExtResource("2_4m46f")
+0:0/animation_columns = 4
+0:0/animation_separation = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/animation_columns = 4
+0:1/animation_separation = Vector2i(1, 1)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/animation_columns = 4
+0:2/animation_separation = Vector2i(1, 1)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/animation_columns = 4
+0:3/animation_separation = Vector2i(1, 1)
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2shd"]
 texture = ExtResource("4_ywgn4")
@@ -482,6 +506,7 @@ sources/8 = SubResource("TileSetAtlasSource_mcgmp")
 sources/9 = SubResource("TileSetAtlasSource_624ti")
 sources/7 = SubResource("TileSetAtlasSource_yhuu2")
 sources/10 = SubResource("TileSetAtlasSource_v2shd")
+sources/0 = SubResource("TileSetAtlasSource_olkvo")
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -497,7 +522,7 @@ layer_1/name = "Walkable"
 layer_1/tile_data = PackedInt32Array(10813442, 262152, 0, 10813443, 262152, 0, 10813444, 262152, 0, 10813445, 262152, 0, 10813446, 262152, 0, 10813447, 262152, 0, 10813448, 262152, 0, 10813449, 262152, 0, 10813450, 262152, 0, 10813451, 327688, 0, 10878987, 327688, 1, 10944523, 327688, 1, 11010059, 327688, 1, 11075595, 327688, 2, 11075594, 262152, 2, 11075593, 262152, 2, 11075592, 262152, 2, 11010056, 262152, 1, 11010055, 262152, 1, 11010054, 262152, 1, 11010053, 262152, 1, 11010052, 262152, 1, 11010051, 262152, 1, 11075586, 262152, 2, 11075587, 262152, 2, 11075588, 262152, 2, 11075589, 262152, 2, 11075590, 262152, 2, 11075591, 262152, 2, 10878978, 262152, 1, 10944514, 262152, 1, 11010050, 262152, 1, 10944515, 262152, 1, 10878979, 262152, 1, 10878980, 262152, 1, 10944516, 262152, 1, 10944517, 262152, 1, 10878981, 262152, 1, 10878982, 262152, 1, 10944518, 262152, 1, 10944519, 262152, 1, 10878983, 262152, 1, 10878984, 262152, 1, 10944520, 262152, 1, 11010057, 262152, 1, 10944521, 262152, 1, 10878985, 262152, 1, 10878986, 262152, 1, 10944522, 262152, 1, 11010058, 262152, 1, 10485768, 65544, 0, 10551317, 196616, 0, 10616853, 196616, 2, 10551318, 327688, 0, 10616854, 327688, 2, 11010072, 196616, 2, 11010073, 262152, 2, 11010074, 327688, 2, 10551312, 131080, 0, 10289165, 65544, 0, 9240598, 196616, 0, 9306134, 196616, 2, 9240599, 327688, 0, 9306135, 327688, 2, 10944536, 196616, 0, 10944537, 262152, 0, 10944538, 327688, 0)
 layer_2/name = "YSort"
 layer_2/y_sort_enabled = true
-layer_2/tile_data = PackedInt32Array(11599896, 458761, 0, 11665432, 458761, 1, 11599897, 524297, 0, 11665433, 524297, 1, 11730969, 524297, 2, 11599898, 589833, 0, 11665434, 589833, 1, 11730970, 589833, 2, 11206685, 458759, 0, 11272221, 458759, 1, 11206686, 524295, 0, 11272222, 524295, 1, 11337758, 524295, 2, 11206687, 589831, 0, 11272223, 589831, 1, 11337759, 589831, 2, 10682384, 458759, 0, 10747920, 458759, 1, 10682385, 524295, 0, 10747921, 524295, 1, 10813457, 524295, 2, 10682386, 589831, 0, 10747922, 589831, 1, 10813458, 589831, 2, 10616858, 458759, 0, 10682394, 458759, 1, 10616859, 524295, 0, 10682395, 524295, 1, 10747931, 524295, 2, 10616860, 589831, 0, 10682396, 589831, 1, 10747932, 589831, 2, 11206664, 458759, 0, 11272200, 458759, 1, 11206665, 524295, 0, 11272201, 524295, 1, 11337737, 524295, 2, 11206666, 589831, 0, 11272202, 589831, 1, 11337738, 589831, 2, 10551300, 458759, 0, 10616836, 458759, 1, 10551301, 524295, 0, 10616837, 524295, 1, 10682373, 524295, 2, 10551302, 589831, 0, 10616838, 589831, 1, 10682374, 589831, 2, 10420235, 458759, 0, 10485771, 458759, 1, 10420236, 524295, 0, 10485772, 524295, 1, 10551308, 524295, 2, 10420237, 589831, 0, 10485773, 589831, 1, 10551309, 589831, 2, 9568269, 458759, 0, 9633805, 458759, 1, 9568270, 524295, 0, 9633806, 524295, 1, 9699342, 524295, 2, 9568271, 589831, 0, 9633807, 589831, 1, 9699343, 589831, 2, 9175046, 458759, 0, 9240582, 458759, 1, 9175047, 524295, 0, 9240583, 524295, 1, 9306119, 524295, 2, 9175048, 589831, 0, 9240584, 589831, 1, 9306120, 589831, 2, 9568282, 458759, 0, 9633818, 458759, 1, 9568283, 524295, 0, 9633819, 524295, 1, 9699355, 524295, 2, 9568284, 589831, 0, 9633820, 589831, 1, 9699356, 589831, 2, 9240606, 458759, 0, 9306142, 458759, 1, 9240607, 524295, 0, 9306143, 524295, 1, 9371679, 524295, 2, 9240608, 589831, 0, 9306144, 589831, 1, 9371680, 589831, 2, 11796505, 524295, 3, 11796506, 589831, 3, 11730968, 458759, 2, 11337757, 458759, 2, 11403294, 524295, 3, 11403295, 589831, 3, 11337736, 458759, 2, 11403273, 524295, 3, 11403274, 589831, 3, 10813456, 458759, 2, 10878993, 524295, 3, 10878994, 589831, 3, 10747930, 458759, 2, 10813467, 524295, 3, 10813468, 589831, 3, 10551307, 458759, 2, 10616844, 524295, 3, 10616845, 589831, 3, 9699354, 458759, 2, 9764891, 524295, 3, 9764892, 589831, 3, 9699341, 458759, 2, 9764878, 524295, 3, 9764879, 589831, 3, 10682372, 458759, 2, 10747909, 524295, 3, 10747910, 589831, 3, 9371678, 458759, 2, 9437215, 524295, 3, 9437216, 589831, 3, 9306118, 458759, 2, 9371655, 524295, 3, 9371656, 589831, 3, 11272207, 458762, 8, 11337743, 458762, 9, 11403279, 458762, 10, 11468815, 458762, 11, 11272208, 524298, 8, 11337744, 524298, 9, 11403280, 524298, 10, 11468816, 524298, 11, 11272209, 589834, 8, 11337745, 589834, 9, 11403281, 589834, 10, 11468817, 589834, 11, 9895952, 458762, 8, 9961488, 458762, 9, 10027024, 458762, 10, 10092560, 458762, 11, 9895953, 524298, 8, 9961489, 524298, 9, 10027025, 524298, 10, 10092561, 524298, 11, 9895954, 589834, 8, 9961490, 589834, 9, 10027026, 589834, 10, 10092562, 589834, 11, 8716290, 458762, 8, 8781826, 458762, 9, 8847362, 458762, 10, 8912898, 458762, 11, 8716291, 524298, 8, 8781827, 524298, 9, 8847363, 524298, 10, 8912899, 524298, 11, 8716292, 589834, 8, 8781828, 589834, 9, 8847364, 589834, 10, 8912900, 589834, 11, 8716312, 458762, 8, 8781848, 458762, 9, 8847384, 458762, 10, 8912920, 458762, 11, 8716313, 524298, 8, 8781849, 524298, 9, 8847385, 524298, 10, 8912921, 524298, 11, 8716314, 589834, 8, 8781850, 589834, 9, 8847386, 589834, 10, 8912922, 589834, 11, 11796485, 458762, 8, 11862021, 458762, 9, 11927557, 458762, 10, 11993093, 458762, 11, 11796486, 524298, 8, 11862022, 524298, 9, 11927558, 524298, 10, 11993094, 524298, 11, 11796487, 589834, 8, 11862023, 589834, 9, 11927559, 589834, 10, 11993095, 589834, 11, 12255261, 458762, 8, 12320797, 458762, 9, 12386333, 458762, 10, 12451869, 458762, 11, 12255262, 524298, 8, 12320798, 524298, 9, 12386334, 524298, 10, 12451870, 524298, 11, 12255263, 589834, 8, 12320799, 589834, 9, 12386335, 589834, 10, 12451871, 589834, 11)
+layer_2/tile_data = PackedInt32Array(9175046, 458759, 0, 9240582, 458759, 1, 9175047, 524295, 0, 9240583, 524295, 1, 9306119, 524295, 2, 9175048, 589831, 0, 9240584, 589831, 1, 9306120, 589831, 2, 9240606, 458759, 0, 9306142, 458759, 1, 9240607, 524295, 0, 9306143, 524295, 1, 9371679, 524295, 2, 9240608, 589831, 0, 9306144, 589831, 1, 9371680, 589831, 2, 9371678, 458759, 2, 9437215, 524295, 3, 9437216, 589831, 3, 9306118, 458759, 2, 9371655, 524295, 3, 9371656, 589831, 3, 8716290, 458762, 8, 8781826, 458762, 9, 8847362, 458762, 10, 8912898, 458762, 11, 8716291, 524298, 8, 8781827, 524298, 9, 8847363, 524298, 10, 8912899, 524298, 11, 8716292, 589834, 8, 8781828, 589834, 9, 8847364, 589834, 10, 8912900, 589834, 11, 8716312, 458762, 8, 8781848, 458762, 9, 8847384, 458762, 10, 8912920, 458762, 11, 8716313, 524298, 8, 8781849, 524298, 9, 8847385, 524298, 10, 8912921, 524298, 11, 8716314, 589834, 8, 8781850, 589834, 9, 8847386, 589834, 10, 8912922, 589834, 11)
 
 [node name="StairsRight" type="Area2D" parent="TileMap"]
 position = Vector2(918, 438)
@@ -506,19 +531,35 @@ position = Vector2(918, 438)
 position = Vector2(50, 442)
 
 [node name="longenemy" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(210, 2822)
+position = Vector2(294, 2879)
 scale = Vector2(1, 1)
 script = ExtResource("6_xigux")
 STAIRS_MULTIPLIER = 3
 
 [node name="longenemy2" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(344, 2546)
+position = Vector2(254, 2593)
+scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="longenemy3" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
+position = Vector2(325, 2457)
 scale = Vector2(1, 1)
 script = ExtResource("6_xigux")
 STAIRS_MULTIPLIER = 3
 
 [node name="smallenemy" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(277, 2281)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy2" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(186, 2745)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy3" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(169, 2142)
 script = ExtResource("6_xigux")
 STAIRS_MULTIPLIER = 3
 
@@ -540,6 +581,60 @@ offset_top = -539.333
 offset_right = -960.667
 offset_bottom = -539.333
 scale = Vector2(0.15, 0.15)
+
+[node name="smallenemy4" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(456, 1904)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy5" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(137.669, 1773.94)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy6" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(270, 1686)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy7" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(255, 1398)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy8" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(355, 1038)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="smallenemy9" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
+position = Vector2(277, 2281)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="longenemy4" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
+position = Vector2(392, 1599)
+scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="longenemy5" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
+position = Vector2(247, 1943)
+scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="longenemy6" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
+position = Vector2(440.717, 1255)
+scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
+
+[node name="longenemy7" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
+position = Vector2(153.715, 915.477)
+scale = Vector2(1, 1)
+script = ExtResource("6_xigux")
+STAIRS_MULTIPLIER = 3
 
 [connection signal="body_entered" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_entered"]
 [connection signal="body_exited" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_exited"]

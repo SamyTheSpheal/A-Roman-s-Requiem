@@ -6,5 +6,6 @@ res://camera_2d.tscn
 res://Scenes/main_menu.tscn
 res://Scenes/pause_menu.tscn
 res://Scenes/controls.tscn
-res://straightlinenemy.gd
 res://Scripts/Player.gd
+res://Scenes/Camera2D.gd
+res://Scenes/Enemy.gd
