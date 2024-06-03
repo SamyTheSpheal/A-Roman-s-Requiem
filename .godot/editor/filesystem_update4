@@ -1,3 +1,4 @@
+res://buffenemy.tscn
 res://Scenes/level1.tscn
 res://Scenes/player.tscn
 res://enemy.tscn
@@ -6,6 +7,3 @@ res://camera_2d.tscn
 res://Scenes/main_menu.tscn
 res://Scenes/pause_menu.tscn
 res://Scenes/controls.tscn
-res://Scripts/Player.gd
-res://Scenes/Camera2D.gd
-res://Scenes/Enemy.gd

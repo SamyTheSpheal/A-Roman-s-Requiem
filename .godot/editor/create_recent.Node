@@ -1,13 +1,13 @@
-CharacterBody2D
-Sprite2D
+CollisionShape2D
 Area2D
+Sprite2D
+CharacterBody2D
 TextureRect
 Button
 RichTextLabel
 TextEdit
 VBoxContainer
 Node2D
-CollisionShape2D
 AnimationPlayer
 Camera2D
 CollisionPolygon2D

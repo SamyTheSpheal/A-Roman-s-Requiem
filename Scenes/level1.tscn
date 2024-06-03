@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://swv5agras8ae"]
+[gd_scene load_steps=19 format=3 uid="uid://swv5agras8ae"]
 
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="1_dpt2p"]
 [ext_resource type="Texture2D" uid="uid://bp6a38obx80mh" path="res://Tilesets/meadowgrassanimation.png" id="2_4m46f"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://nrtufipqail6" path="res://enemy.tscn" id="8_bcoqa"]
 [ext_resource type="PackedScene" uid="uid://cklep3s8voota" path="res://smallenemy.tscn" id="10_owojf"]
 [ext_resource type="Texture2D" uid="uid://yju3hx8b3n2f" path="res://Tilesets/Ground/ARRLv1TileSet2.png" id="10_r8b5k"]
+[ext_resource type="PackedScene" uid="uid://bg6in4jqtjmnb" path="res://buffenemy.tscn" id="12_f6q34"]
 [ext_resource type="PackedScene" uid="uid://uga7qrnog472" path="res://camera_2d.tscn" id="12_qkfpd"]
 [ext_resource type="PackedScene" uid="uid://5fxou4xge7a7" path="res://Scenes/pause_menu.tscn" id="14_qv31s"]
 
@@ -530,6 +531,21 @@ position = Vector2(918, 438)
 [node name="StairsLeft" type="Area2D" parent="TileMap"]
 position = Vector2(50, 442)
 
+[node name="Camera2D" parent="." instance=ExtResource("12_qkfpd")]
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("14_qv31s")]
+z_index = 1000
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.667
+offset_top = -539.333
+offset_right = -960.667
+offset_bottom = -539.333
+scale = Vector2(0.15, 0.15)
+
 [node name="longenemy" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
 position = Vector2(294, 2879)
 scale = Vector2(1, 1)
@@ -566,21 +582,6 @@ STAIRS_MULTIPLIER = 3
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
 position = Vector2(281, 3029)
 HORIZONTAL_MOVEMENT = 75
-
-[node name="Camera2D" parent="." instance=ExtResource("12_qkfpd")]
-
-[node name="PauseMenu" parent="Camera2D" instance=ExtResource("14_qv31s")]
-z_index = 1000
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.667
-offset_top = -539.333
-offset_right = -960.667
-offset_bottom = -539.333
-scale = Vector2(0.15, 0.15)
 
 [node name="smallenemy4" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
 position = Vector2(456, 1904)
@@ -635,6 +636,9 @@ position = Vector2(153.715, 915.477)
 scale = Vector2(1, 1)
 script = ExtResource("6_xigux")
 STAIRS_MULTIPLIER = 3
+
+[node name="buffenemy" parent="." instance=ExtResource("12_f6q34")]
+position = Vector2(273, 2760)
 
 [connection signal="body_entered" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_entered"]
 [connection signal="body_exited" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_exited"]
