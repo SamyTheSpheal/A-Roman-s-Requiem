@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmmapmqqu28k6"]
+
+[ext_resource type="Script" path="res://NewPlayer.gd" id="1_4pfaq"]
+[ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/peterwalkcycle1.png" id="2_1d5dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1rar"]
+size = Vector2(17, 7)
+
+[node name="PlayerTest" type="CharacterBody2D"]
+script = ExtResource("1_4pfaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.53674e-06, 3.8147e-06)
+shape = SubResource("RectangleShape2D_e1rar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -12)
+texture = ExtResource("2_1d5dd")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+vframes = 5

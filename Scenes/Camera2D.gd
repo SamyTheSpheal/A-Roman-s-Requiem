@@ -14,3 +14,8 @@ func _physics_process(delta):
 	for body in overlapping_bodies:
 		if body.name == "Player":
 			body.death()
+	overlapping_bodies = $VelocityCapZone.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body.name == "Player":
+			body.vcap()
+			

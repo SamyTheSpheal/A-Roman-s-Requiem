@@ -1,13 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://swv5agras8ae"]
+[gd_scene load_steps=15 format=3 uid="uid://swv5agras8ae"]
 
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="1_dpt2p"]
 [ext_resource type="Texture2D" uid="uid://bp6a38obx80mh" path="res://Tilesets/meadowgrassanimation.png" id="2_4m46f"]
 [ext_resource type="Texture2D" uid="uid://cxiwuqq6h3qis" path="res://Tilesets/ARRLv1Tileset3.png" id="4_ywgn4"]
-[ext_resource type="Script" path="res://straightlinenemy.gd" id="6_xigux"]
 [ext_resource type="PackedScene" uid="uid://bkprbqt261yqc" path="res://Scenes/player.tscn" id="7_wf2d5"]
 [ext_resource type="Texture2D" uid="uid://lj3i7ueb2wq8" path="res://Tilesets/ARRLv1TileSet.png" id="8_5mjju"]
-[ext_resource type="PackedScene" uid="uid://nrtufipqail6" path="res://enemy.tscn" id="8_bcoqa"]
-[ext_resource type="PackedScene" uid="uid://cklep3s8voota" path="res://smallenemy.tscn" id="10_owojf"]
 [ext_resource type="Texture2D" uid="uid://yju3hx8b3n2f" path="res://Tilesets/Ground/ARRLv1TileSet2.png" id="10_r8b5k"]
 [ext_resource type="PackedScene" uid="uid://uga7qrnog472" path="res://camera_2d.tscn" id="12_qkfpd"]
 [ext_resource type="PackedScene" uid="uid://5fxou4xge7a7" path="res://Scenes/pause_menu.tscn" id="14_qv31s"]
@@ -530,42 +527,8 @@ position = Vector2(918, 438)
 [node name="StairsLeft" type="Area2D" parent="TileMap"]
 position = Vector2(50, 442)
 
-[node name="longenemy" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(294, 2879)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="longenemy2" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(254, 2593)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="longenemy3" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(325, 2457)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(277, 2281)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy2" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(186, 2745)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy3" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(169, 2142)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
 [node name="Player" parent="." instance=ExtResource("7_wf2d5")]
 position = Vector2(281, 3029)
-HORIZONTAL_MOVEMENT = 75
 
 [node name="Camera2D" parent="." instance=ExtResource("12_qkfpd")]
 
@@ -581,60 +544,6 @@ offset_top = -539.333
 offset_right = -960.667
 offset_bottom = -539.333
 scale = Vector2(0.15, 0.15)
-
-[node name="smallenemy4" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(456, 1904)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy5" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(137.669, 1773.94)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy6" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(270, 1686)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy7" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(255, 1398)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy8" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(355, 1038)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="smallenemy9" parent="." groups=["enemy"] instance=ExtResource("10_owojf")]
-position = Vector2(277, 2281)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="longenemy4" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(392, 1599)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="longenemy5" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(247, 1943)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="longenemy6" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(440.717, 1255)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
-
-[node name="longenemy7" parent="." groups=["enemy"] instance=ExtResource("8_bcoqa")]
-position = Vector2(153.715, 915.477)
-scale = Vector2(1, 1)
-script = ExtResource("6_xigux")
-STAIRS_MULTIPLIER = 3
 
 [connection signal="body_entered" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_entered"]
 [connection signal="body_exited" from="TileMap/StairsRight" to="Player" method="_on_stairs_right_body_exited"]

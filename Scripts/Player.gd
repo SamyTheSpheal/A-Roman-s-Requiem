@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 @export var AUTO_Y_MOVEMENT = 50
 @export var HORIZONTAL_MOVEMENT = 50
-@export var WALKSPEED = 10
-@export var SPRINTSPEED = 25
+@export var WALKSPEED = 100
+@export var SPRINTSPEED = 1
 @export var ACCELERATION = 1000
 @export var FRICTION = 1000
 @export var STAIRS_MULTIPLIER = 0.75
-@export var DASH_MULTIPLIER = 50
+@export var DASH_MULTIPLIER = 30
 @export var DASH_FRICTION = 9999
 @export var HALF_SWING_ANGLE = 100
 @export var SWING_SPEED = 40
@@ -24,7 +24,8 @@ enum StairTypes {NONE, UP_DOWN, LEFT, RIGHT}
 @onready var target_speed = Vector2.ZERO
 @onready var stair_type = StairTypes.NONE
 @onready var y_bias = 0
-@onready var speed_multiplier = 1
+@onready var speed_multiplier = 50
+@onready var speed_multiple = 1
 @onready var left_click_pressed = false
 @onready var left_click_just_pressed = false
 @onready var dashing = false
@@ -73,6 +74,7 @@ func _physics_process(delta):
 		update_animation()
 	elif dead:
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	update_speed_bar()
 
 func death():
 	dead = true
@@ -106,9 +108,9 @@ func move(delta):
 			velocity.x = 0
 	else:
 		if (Input.is_key_pressed(KEY_SHIFT)):
-			speed_offset = SPRINTSPEED * speed_multiplier
+			speed_offset = SPRINTSPEED * speed_multiple
 		else:
-			speed_offset = WALKSPEED * speed_multiplier
+			speed_offset = WALKSPEED * speed_multiple
 		target_speed = Vector2(sign(axis.x) * (HORIZONTAL_MOVEMENT + speed_offset), -AUTO_Y_MOVEMENT + (sign(axis.y) * speed_offset))
 		velocity = target_speed
 		velocity = velocity.limit_length(max(HORIZONTAL_MOVEMENT, AUTO_Y_MOVEMENT * speed_multiplier * .75) + speed_offset)
@@ -119,7 +121,7 @@ func dash(delta):
 	if not dashing:
 		axis = get_global_mouse_position() - self.global_position
 		axis = axis.normalized()
-		velocity += axis * speed_offset * DASH_MULTIPLIER
+		velocity += axis * speed_offset
 		dashing = true
 	else:
 		if velocity.length() > (DASH_FRICTION * delta):
@@ -140,8 +142,6 @@ func slash(delta):
 		slashing = true
 		sword_collision = true
 		velocity += axis * speed_offset * speed_multiplier * DASH_MULTIPLIER
-		speed_multiplier -= .07
-		set_health_bar(speed_multiplier)
 		$SwordHitbox/Swish.frame = 1
 	else:
 		var progress = (sword_hitbox.rotation - sword_start_rotation) / (sword_end_rotation - sword_start_rotation)
@@ -163,13 +163,14 @@ func slash(delta):
 			
 
 func damage():
-	speed_multiplier -= .1
+	speed_multiple -= 1
 	damage_flicker()
-	set_health_bar(speed_multiplier)
 	
 func enemy_hit():
-	speed_multiplier += .1
-	set_health_bar(speed_multiplier)
+	speed_multiple += 1
+	
+func update_speed_bar():
+	$ProgressBar.value = speed_multiple
 	
 func damage_flicker():
 	modulate.a = .2
@@ -200,9 +201,6 @@ func check_overlapping_bodies(delta):
 			enemy_hit()
 			body.knockback(KNOCKBACK_POWER, delta)
 			
-func set_health_bar(value):
-	$ProgressBar.value = value * 50
-
 func update_animation():
 	if velocity.length() != 0:
 		$AnimationPlayer.play("peter_run")

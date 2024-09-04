@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bkprbqt261yqc"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xi3l1"]
+[ext_resource type="Script" path="res://NewPlayer.gd" id="1_dqcwm"]
 [ext_resource type="Texture2D" uid="uid://cmx4ak368712k" path="res://Sprites/Screenshot 2024-03-08 at 4.13.00 PM.png" id="2_uw0ld"]
 [ext_resource type="Texture2D" uid="uid://cq5w4vk8t1vra" path="res://Sprites/peterwalkcycle1.png" id="3_7ctya"]
 [ext_resource type="Texture2D" uid="uid://cy68ahmuvpcva" path="res://Sprites/Character Attachments/swordofthespirit.png" id="4_xl3g1"]
@@ -74,18 +74,17 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_as_relative = false
 y_sort_enabled = true
-script = ExtResource("1_xi3l1")
+script = ExtResource("1_dqcwm")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -11.0
-offset_top = -38.0
+offset_top = -61.0
 offset_right = 11.0
 offset_bottom = -34.0
 theme_override_styles/fill = SubResource("StyleBoxTexture_lky1d")
-min_value = 1.0
-step = 1.0
-value = 50.0
-show_percentage = false
+max_value = 200.0
+step = 0.0
+value = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9.53674e-06, 3.8147e-06)

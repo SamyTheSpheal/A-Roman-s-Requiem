@@ -1,7 +1,8 @@
-res://Tilesets
 res://
+res://Scripts
+res://Scenes
+res://Tilesets
 res://Tilesets/animatedtextures
 res://Tilesets/Ground
-res://Scenes
 res://Sprites/HUD GUI Elements
 res://Sprites/Character Attachments

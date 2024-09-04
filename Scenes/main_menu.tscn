@@ -70,6 +70,20 @@ offset_right = 593.0
 offset_bottom = 388.0
 texture = ExtResource("5_o536d")
 
+[node name="DebugBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.021
+anchor_bottom = 0.037
+offset_left = 573.0
+offset_top = 424.0
+offset_right = 664.68
+offset_bottom = 455.04
+
+[node name="Debug" type="Button" parent="DebugBox"]
+layout_mode = 2
+text = "debug"
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

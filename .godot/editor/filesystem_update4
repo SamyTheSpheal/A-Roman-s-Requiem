@@ -3,9 +3,9 @@ res://Scenes/player.tscn
 res://enemy.tscn
 res://smallenemy.tscn
 res://camera_2d.tscn
+res://debug.tscn
+res://player_test.tscn
 res://Scenes/main_menu.tscn
-res://Scenes/pause_menu.tscn
-res://Scenes/controls.tscn
+res://NewPlayer.gd
 res://Scripts/Player.gd
 res://Scenes/Camera2D.gd
-res://Scenes/Enemy.gd

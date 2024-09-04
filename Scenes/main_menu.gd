@@ -18,3 +18,6 @@ func _on_controls_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+	
+func _on_debug_pressed():
+	get_tree().change_scene_to_file("res://debug.tscn")
